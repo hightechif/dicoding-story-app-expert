@@ -1,8 +1,8 @@
-package com.fadhil.storyapp.domain.usecase
+package com.fadhil.storyappexpert.domain.usecase
 
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.response.ApiResponse
-import com.fadhil.storyapp.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
 import kotlinx.coroutines.flow.Flow
 
 interface IAuthUseCase {

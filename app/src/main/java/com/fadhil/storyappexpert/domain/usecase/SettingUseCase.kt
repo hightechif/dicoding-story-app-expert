@@ -1,6 +1,6 @@
-package com.fadhil.storyapp.domain.usecase
+package com.fadhil.storyappexpert.domain.usecase
 
-import com.fadhil.storyapp.data.source.SettingRepository
+import com.fadhil.storyappexpert.data.source.SettingRepository
 import javax.inject.Inject
 
 class SettingUseCase @Inject constructor(

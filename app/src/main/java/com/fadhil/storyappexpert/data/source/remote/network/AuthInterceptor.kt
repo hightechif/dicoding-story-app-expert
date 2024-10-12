@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.data.source.remote.network
+package com.fadhil.storyappexpert.data.source.remote.network
 
-import com.fadhil.storyapp.data.source.local.prefs.HttpHeaderLocalSource
-import com.fadhil.storyapp.util.StringUtil.Empty
+import com.fadhil.storyappexpert.data.source.local.prefs.HttpHeaderLocalSource
+import com.fadhil.storyappexpert.util.StringUtil.Empty
 import okhttp3.Interceptor
 import okhttp3.Response
 import timber.log.Timber

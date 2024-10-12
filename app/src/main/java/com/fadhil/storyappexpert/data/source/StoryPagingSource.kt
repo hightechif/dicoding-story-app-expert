@@ -1,10 +1,10 @@
-package com.fadhil.storyapp.data.source
+package com.fadhil.storyappexpert.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.fadhil.storyapp.data.source.remote.StoryRemoteDataSource
-import com.fadhil.storyapp.domain.mapper.StoryMapper
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.data.source.remote.StoryRemoteDataSource
+import com.fadhil.storyappexpert.domain.mapper.StoryMapper
+import com.fadhil.storyappexpert.domain.model.Story
 import org.mapstruct.factory.Mappers
 import javax.inject.Inject
 

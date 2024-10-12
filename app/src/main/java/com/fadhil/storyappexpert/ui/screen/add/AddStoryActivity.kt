@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.add
+package com.fadhil.storyappexpert.ui.screen.add
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -21,13 +21,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.fadhil.storyapp.R
-import com.fadhil.storyapp.data.ProcessResult
-import com.fadhil.storyapp.data.ProcessResultDelegate
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.response.FileUploadResponse
-import com.fadhil.storyapp.databinding.ActivityAddStoryBinding
-import com.fadhil.storyapp.util.CameraUtils
+import com.fadhil.storyappexpert.R
+import com.fadhil.storyappexpert.data.ProcessResult
+import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.databinding.ActivityAddStoryBinding
+import com.fadhil.storyappexpert.util.CameraUtils
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

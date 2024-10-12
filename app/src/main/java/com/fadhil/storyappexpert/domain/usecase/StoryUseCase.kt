@@ -1,8 +1,8 @@
-package com.fadhil.storyapp.domain.usecase
+package com.fadhil.storyappexpert.domain.usecase
 
 import android.content.Context
 import android.net.Uri
-import com.fadhil.storyapp.domain.repository.IStoryRepository
+import com.fadhil.storyappexpert.domain.repository.IStoryRepository
 import javax.inject.Inject
 
 

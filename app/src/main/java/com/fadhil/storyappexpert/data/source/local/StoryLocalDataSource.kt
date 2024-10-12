@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.data.source.local
+package com.fadhil.storyappexpert.data.source.local
 
-import com.fadhil.storyapp.data.source.local.db.StoryDao
-import com.fadhil.storyapp.data.source.local.entity.StoryEntity
+import com.fadhil.storyappexpert.data.source.local.db.StoryDao
+import com.fadhil.storyappexpert.data.source.local.entity.StoryEntity
 import javax.inject.Inject
 
 class StoryLocalDataSource @Inject constructor(

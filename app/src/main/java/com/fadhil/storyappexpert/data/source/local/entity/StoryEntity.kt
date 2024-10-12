@@ -1,9 +1,9 @@
-package com.fadhil.storyapp.data.source.local.entity
+package com.fadhil.storyappexpert.data.source.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.fadhil.storyapp.util.DateTimeUtil
+import com.fadhil.storyappexpert.util.DateTimeUtil
 import java.time.Instant
 import java.time.LocalDateTime
 

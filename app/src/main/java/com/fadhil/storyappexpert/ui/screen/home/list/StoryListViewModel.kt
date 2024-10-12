@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.home.list
+package com.fadhil.storyappexpert.ui.screen.home.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.fadhil.storyapp.domain.model.Story
-import com.fadhil.storyapp.domain.usecase.IStoryUseCase
+import com.fadhil.storyappexpert.domain.model.Story
+import com.fadhil.storyappexpert.domain.usecase.IStoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

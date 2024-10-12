@@ -1,8 +1,8 @@
-package com.fadhil.storyapp.data.source.local
+package com.fadhil.storyappexpert.data.source.local
 
-import com.fadhil.storyapp.data.source.local.prefs.ConfigurationLocalSource
-import com.fadhil.storyapp.data.source.local.prefs.HttpHeaderLocalSource
-import com.fadhil.storyapp.domain.model.Configuration
+import com.fadhil.storyappexpert.data.source.local.prefs.ConfigurationLocalSource
+import com.fadhil.storyappexpert.data.source.local.prefs.HttpHeaderLocalSource
+import com.fadhil.storyappexpert.domain.model.Configuration
 import javax.inject.Inject
 
 class ConfigurationLocalDataSource @Inject constructor(

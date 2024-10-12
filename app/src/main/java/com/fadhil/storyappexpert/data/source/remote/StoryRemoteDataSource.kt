@@ -1,8 +1,8 @@
-package com.fadhil.storyapp.data.source.remote
+package com.fadhil.storyappexpert.data.source.remote
 
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.network.StoryApiService
-import com.fadhil.storyapp.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.network.StoryApiService
+import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject

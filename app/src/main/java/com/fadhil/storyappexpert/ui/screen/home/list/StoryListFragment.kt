@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.home.list
+package com.fadhil.storyappexpert.ui.screen.home.list
 
 import android.app.Activity
 import android.os.Bundle
@@ -11,13 +11,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.fadhil.storyapp.databinding.FragmentStoryListBinding
-import com.fadhil.storyapp.ui.screen.add.AddStoryActivity
-import com.fadhil.storyapp.ui.screen.home.list.adapter.LoadingStateAdapter
-import com.fadhil.storyapp.ui.screen.home.list.adapter.PagingStoryAdapter
-import com.fadhil.storyapp.ui.screen.home.list.adapter.StoryComparator
-import com.fadhil.storyapp.ui.screen.home.list.adapter.StoryDelegate
-import com.fadhil.storyapp.ui.screen.maps.StoryMapsActivity
+import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
+import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
+import com.fadhil.storyappexpert.ui.screen.maps.StoryMapsActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 

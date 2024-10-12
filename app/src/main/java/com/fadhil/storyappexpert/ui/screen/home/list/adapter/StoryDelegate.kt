@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.home.list.adapter
+package com.fadhil.storyappexpert.ui.screen.home.list.adapter
 
 import android.view.View
 

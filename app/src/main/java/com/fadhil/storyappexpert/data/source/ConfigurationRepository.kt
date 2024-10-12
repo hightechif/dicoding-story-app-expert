@@ -1,9 +1,9 @@
-package com.fadhil.storyapp.data.source
+package com.fadhil.storyappexpert.data.source
 
-import com.fadhil.storyapp.data.source.local.ConfigurationLocalDataSource
-import com.fadhil.storyapp.domain.model.Configuration
-import com.fadhil.storyapp.domain.model.Session
-import com.fadhil.storyapp.domain.repository.IConfigurationRepository
+import com.fadhil.storyappexpert.data.source.local.ConfigurationLocalDataSource
+import com.fadhil.storyappexpert.domain.model.Configuration
+import com.fadhil.storyappexpert.domain.model.Session
+import com.fadhil.storyappexpert.domain.repository.IConfigurationRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

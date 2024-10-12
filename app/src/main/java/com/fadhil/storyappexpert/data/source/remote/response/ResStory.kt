@@ -1,6 +1,6 @@
-package com.fadhil.storyapp.data.source.remote.response
+package com.fadhil.storyappexpert.data.source.remote.response
 
-import com.fadhil.storyapp.util.DateTimeUtil
+import com.fadhil.storyappexpert.util.DateTimeUtil
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
 

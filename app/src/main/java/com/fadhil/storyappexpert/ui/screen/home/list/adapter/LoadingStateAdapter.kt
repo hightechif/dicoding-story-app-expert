@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.home.list.adapter
+package com.fadhil.storyappexpert.ui.screen.home.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.fadhil.storyapp.databinding.ItemLoadingBinding
+import com.fadhil.storyappexpert.databinding.ItemLoadingBinding
 
 class LoadingStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {

@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.home
+package com.fadhil.storyappexpert.ui.screen.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
-import com.fadhil.storyapp.R
-import com.fadhil.storyapp.databinding.ActivityHomeBinding
-import com.fadhil.storyapp.ui.screen.login.LoginActivity
+import com.fadhil.storyappexpert.R
+import com.fadhil.storyappexpert.databinding.ActivityHomeBinding
+import com.fadhil.storyappexpert.ui.screen.login.LoginActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 

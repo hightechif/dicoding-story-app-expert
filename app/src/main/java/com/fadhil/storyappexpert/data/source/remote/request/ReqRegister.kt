@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.data.source.remote.request
+package com.fadhil.storyappexpert.data.source.remote.request
 
 import com.google.gson.annotations.SerializedName
 

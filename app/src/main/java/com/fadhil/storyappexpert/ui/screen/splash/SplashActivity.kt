@@ -1,13 +1,13 @@
-package com.fadhil.storyapp.ui.screen.splash
+package com.fadhil.storyappexpert.ui.screen.splash
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.fadhil.storyapp.databinding.ActivitySplashBinding
-import com.fadhil.storyapp.ui.screen.home.HomeActivity
-import com.fadhil.storyapp.ui.screen.login.LoginActivity
+import com.fadhil.storyappexpert.databinding.ActivitySplashBinding
+import com.fadhil.storyappexpert.ui.screen.home.HomeActivity
+import com.fadhil.storyappexpert.ui.screen.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

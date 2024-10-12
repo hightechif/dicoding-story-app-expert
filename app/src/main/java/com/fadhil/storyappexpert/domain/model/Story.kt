@@ -1,6 +1,6 @@
-package com.fadhil.storyapp.domain.model
+package com.fadhil.storyappexpert.domain.model
 
-import com.fadhil.storyapp.util.DateTimeUtil
+import com.fadhil.storyappexpert.util.DateTimeUtil
 import java.time.LocalDateTime
 
 data class Story(

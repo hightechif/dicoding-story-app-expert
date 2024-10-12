@@ -1,9 +1,9 @@
-package com.fadhil.storyapp.domain.usecase
+package com.fadhil.storyappexpert.domain.usecase
 
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.response.ApiResponse
-import com.fadhil.storyapp.data.source.remote.response.ResLogin
-import com.fadhil.storyapp.domain.repository.IAuthRepository
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.domain.repository.IAuthRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

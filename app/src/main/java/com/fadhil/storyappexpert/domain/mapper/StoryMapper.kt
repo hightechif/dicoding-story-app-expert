@@ -1,8 +1,8 @@
-package com.fadhil.storyapp.domain.mapper
+package com.fadhil.storyappexpert.domain.mapper
 
-import com.fadhil.storyapp.data.source.local.entity.StoryEntity
-import com.fadhil.storyapp.data.source.remote.response.ResStory
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.data.source.local.entity.StoryEntity
+import com.fadhil.storyappexpert.data.source.remote.response.ResStory
+import com.fadhil.storyappexpert.domain.model.Story
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings

@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.utils
+package com.fadhil.storyappexpert.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

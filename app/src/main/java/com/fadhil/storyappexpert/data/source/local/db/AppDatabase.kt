@@ -1,9 +1,9 @@
-package com.fadhil.storyapp.data.source.local.db
+package com.fadhil.storyappexpert.data.source.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.fadhil.storyapp.data.source.local.entity.RemoteKeys
-import com.fadhil.storyapp.data.source.local.entity.StoryEntity
+import com.fadhil.storyappexpert.data.source.local.entity.RemoteKeys
+import com.fadhil.storyappexpert.data.source.local.entity.StoryEntity
 
 @Database(entities = [StoryEntity::class, RemoteKeys::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

@@ -1,12 +1,12 @@
-package com.fadhil.storyapp.data.source.remote.network
+package com.fadhil.storyappexpert.data.source.remote.network
 
-import com.fadhil.storyapp.data.source.remote.request.ReqLogin
-import com.fadhil.storyapp.data.source.remote.request.ReqRegister
-import com.fadhil.storyapp.data.source.remote.response.ApiContentResponse
-import com.fadhil.storyapp.data.source.remote.response.ApiResponse
-import com.fadhil.storyapp.data.source.remote.response.FileUploadResponse
-import com.fadhil.storyapp.data.source.remote.response.ResLogin
-import com.fadhil.storyapp.data.source.remote.response.ResStory
+import com.fadhil.storyappexpert.data.source.remote.request.ReqLogin
+import com.fadhil.storyappexpert.data.source.remote.request.ReqRegister
+import com.fadhil.storyappexpert.data.source.remote.response.ApiContentResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.data.source.remote.response.ResStory
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
