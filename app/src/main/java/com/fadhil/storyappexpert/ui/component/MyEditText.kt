@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.component
+package com.fadhil.storyappexpert.ui.component
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,8 +7,8 @@ import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 import android.util.AttributeSet
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatEditText
-import com.fadhil.storyapp.R
-import com.fadhil.storyapp.util.ConvertUtils.dp
+import com.fadhil.storyappexpert.R
+import com.fadhil.storyappexpert.util.ConvertUtils.dp
 
 
 class MyEditText : AppCompatEditText {

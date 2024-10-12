@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.data.source.remote.network
+package com.fadhil.storyappexpert.data.source.remote.network
 
-import com.fadhil.storyapp.BuildConfig
-import com.fadhil.storyapp.data.source.local.prefs.HttpHeaderLocalSource
+import com.fadhil.storyappexpert.BuildConfig
+import com.fadhil.storyappexpert.data.source.local.prefs.HttpHeaderLocalSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

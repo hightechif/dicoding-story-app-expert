@@ -1,16 +1,16 @@
-package com.fadhil.storyapp.ui.screen.home.list
+package com.fadhil.storyappexpert.ui.screen.home.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.AsyncPagingDataDiffer
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ListUpdateCallback
-import com.fadhil.storyapp.domain.model.Story
-import com.fadhil.storyapp.domain.usecase.IStoryUseCase
-import com.fadhil.storyapp.ui.screen.home.list.adapter.StoryComparator
-import com.fadhil.storyapp.util.DataDummy
-import com.fadhil.storyapp.utils.MainDispatcherRule
-import com.fadhil.storyapp.utils.getOrAwaitValue
+import com.fadhil.storyappexpert.domain.model.Story
+import com.fadhil.storyappexpert.domain.usecase.IStoryUseCase
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
+import com.fadhil.storyappexpert.util.DataDummy
+import com.fadhil.storyappexpert.utils.MainDispatcherRule
+import com.fadhil.storyappexpert.utils.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert

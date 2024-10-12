@@ -1,13 +1,13 @@
-package com.fadhil.storyapp.data.source
+package com.fadhil.storyappexpert.data.source
 
-import com.fadhil.storyapp.data.NetworkBoundProcessResource
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.local.ConfigurationLocalDataSource
-import com.fadhil.storyapp.data.source.remote.AuthRemoteDataSource
-import com.fadhil.storyapp.data.source.remote.response.ApiResponse
-import com.fadhil.storyapp.data.source.remote.response.ResLogin
-import com.fadhil.storyapp.domain.model.Configuration
-import com.fadhil.storyapp.domain.repository.IAuthRepository
+import com.fadhil.storyappexpert.data.NetworkBoundProcessResource
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.local.ConfigurationLocalDataSource
+import com.fadhil.storyappexpert.data.source.remote.AuthRemoteDataSource
+import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.domain.model.Configuration
+import com.fadhil.storyappexpert.domain.repository.IAuthRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

@@ -1,11 +1,11 @@
-package com.fadhil.storyapp.data.source.local.db
+package com.fadhil.storyappexpert.data.source.local.db
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.fadhil.storyapp.data.source.local.entity.StoryEntity
+import com.fadhil.storyappexpert.data.source.local.entity.StoryEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

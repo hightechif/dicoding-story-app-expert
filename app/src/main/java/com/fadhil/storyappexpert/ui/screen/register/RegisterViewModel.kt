@@ -1,11 +1,11 @@
-package com.fadhil.storyapp.ui.screen.register
+package com.fadhil.storyappexpert.ui.screen.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.fadhil.storyapp.domain.usecase.AuthUseCase
+import com.fadhil.storyappexpert.domain.usecase.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

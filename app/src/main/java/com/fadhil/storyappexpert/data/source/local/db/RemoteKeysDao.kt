@@ -1,10 +1,10 @@
-package com.fadhil.storyapp.data.source.local.db
+package com.fadhil.storyappexpert.data.source.local.db
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.fadhil.storyapp.data.source.local.entity.RemoteKeys
+import com.fadhil.storyappexpert.data.source.local.entity.RemoteKeys
 
 @Dao
 interface RemoteKeysDao {

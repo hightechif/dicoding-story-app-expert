@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.fadhil.storyapp"
+    namespace = "com.fadhil.storyappexpert"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.fadhil.storyapp"
+        applicationId = "com.fadhil.storyappexpert"
         minSdk = 26
         targetSdk = 33
         versionCode = 1

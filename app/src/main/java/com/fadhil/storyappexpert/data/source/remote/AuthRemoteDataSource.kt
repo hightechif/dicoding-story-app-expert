@@ -1,11 +1,11 @@
-package com.fadhil.storyapp.data.source.remote
+package com.fadhil.storyappexpert.data.source.remote
 
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.network.StoryApiService
-import com.fadhil.storyapp.data.source.remote.request.ReqLogin
-import com.fadhil.storyapp.data.source.remote.request.ReqRegister
-import com.fadhil.storyapp.data.source.remote.response.ApiResponse
-import com.fadhil.storyapp.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.network.StoryApiService
+import com.fadhil.storyappexpert.data.source.remote.request.ReqLogin
+import com.fadhil.storyappexpert.data.source.remote.request.ReqRegister
+import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
 import javax.inject.Inject
 
 class AuthRemoteDataSource @Inject constructor(

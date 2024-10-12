@@ -1,6 +1,6 @@
-package com.fadhil.storyapp.data.source.local
+package com.fadhil.storyappexpert.data.source.local
 
-import com.fadhil.storyapp.data.source.local.prefs.SettingPreferences
+import com.fadhil.storyappexpert.data.source.local.prefs.SettingPreferences
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

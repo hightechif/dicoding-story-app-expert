@@ -1,6 +1,6 @@
-package com.fadhil.storyapp.util
+package com.fadhil.storyappexpert.util
 
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.domain.model.Story
 import java.time.LocalDateTime
 
 object DataDummy {

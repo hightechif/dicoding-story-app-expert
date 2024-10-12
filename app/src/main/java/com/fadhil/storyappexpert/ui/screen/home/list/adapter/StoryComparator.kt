@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.ui.screen.home.list.adapter
+package com.fadhil.storyappexpert.ui.screen.home.list.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.domain.model.Story
 
 object StoryComparator : DiffUtil.ItemCallback<Story>() {
     override fun areItemsTheSame(oldItem: Story, newItem: Story): Boolean {

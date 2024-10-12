@@ -1,12 +1,12 @@
-package com.fadhil.storyapp.ui.screen.home.list.adapter
+package com.fadhil.storyappexpert.ui.screen.home.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.fadhil.storyapp.databinding.ItemRowStoryBinding
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.databinding.ItemRowStoryBinding
+import com.fadhil.storyappexpert.domain.model.Story
 
 class StoryAdapter : RecyclerView.Adapter<StoryViewHolder>() {
 

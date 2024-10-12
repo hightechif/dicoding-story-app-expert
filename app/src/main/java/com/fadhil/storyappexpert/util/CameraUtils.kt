@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.util
+package com.fadhil.storyappexpert.util
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,7 +7,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
-import com.fadhil.storyapp.BuildConfig
+import com.fadhil.storyappexpert.BuildConfig
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date

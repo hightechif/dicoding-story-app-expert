@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.data
+package com.fadhil.storyappexpert.data
 
 sealed class Result<out T>(val data: T? = null, val code: String? = null, val message: String? = null) {
 

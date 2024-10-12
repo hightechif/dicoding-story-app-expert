@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.login
+package com.fadhil.storyappexpert.ui.screen.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +9,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
-import com.fadhil.storyapp.data.ProcessResult
-import com.fadhil.storyapp.data.ProcessResultDelegate
-import com.fadhil.storyapp.data.source.remote.response.ResLogin
-import com.fadhil.storyapp.databinding.ActivityLoginBinding
-import com.fadhil.storyapp.ui.screen.home.HomeActivity
-import com.fadhil.storyapp.ui.screen.register.RegisterActivity
-import com.fadhil.storyapp.util.StringUtil.Empty
+import com.fadhil.storyappexpert.data.ProcessResult
+import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.databinding.ActivityLoginBinding
+import com.fadhil.storyappexpert.ui.screen.home.HomeActivity
+import com.fadhil.storyappexpert.ui.screen.register.RegisterActivity
+import com.fadhil.storyappexpert.util.StringUtil.Empty
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint

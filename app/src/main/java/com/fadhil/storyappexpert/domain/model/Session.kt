@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.domain.model
+package com.fadhil.storyappexpert.domain.model
 
 data class Session(
     val username: String?,

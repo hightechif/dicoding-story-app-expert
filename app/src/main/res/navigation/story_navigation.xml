@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/storyListFragment"
-        android:name="com.fadhil.storyapp.ui.screen.home.list.StoryListFragment"
+        android:name="com.fadhil.storyappexpert.ui.screen.home.list.StoryListFragment"
         android:label="StoryListFragment"
         tools:layout="@layout/fragment_story_list">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/storyDetailFragment"
-        android:name="com.fadhil.storyapp.ui.screen.home.detail.StoryDetailFragment"
+        android:name="com.fadhil.storyappexpert.ui.screen.home.detail.StoryDetailFragment"
         android:label="DetailUserFragment"
         tools:layout="@layout/fragment_story_detail">
         <argument

@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.constant
+package com.fadhil.storyappexpert.constant
 
 open class ErrorMessage {
     open fun http503() = "Sedang ada gangguan sistem, coba lagi lain waktu."

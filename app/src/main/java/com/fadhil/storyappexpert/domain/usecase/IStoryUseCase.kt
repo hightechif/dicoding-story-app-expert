@@ -1,12 +1,12 @@
-package com.fadhil.storyapp.domain.usecase
+package com.fadhil.storyappexpert.domain.usecase
 
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.response.FileUploadResponse
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.domain.model.Story
 import kotlinx.coroutines.flow.Flow
 
 interface IStoryUseCase {

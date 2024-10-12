@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.maps
+package com.fadhil.storyappexpert.ui.screen.maps
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import com.fadhil.storyapp.R
-import com.fadhil.storyapp.data.ProcessResult
-import com.fadhil.storyapp.data.ProcessResultDelegate
-import com.fadhil.storyapp.databinding.ActivityStoryMapsBinding
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.R
+import com.fadhil.storyappexpert.data.ProcessResult
+import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.databinding.ActivityStoryMapsBinding
+import com.fadhil.storyappexpert.domain.model.Story
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

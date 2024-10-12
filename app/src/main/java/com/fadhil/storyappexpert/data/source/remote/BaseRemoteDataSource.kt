@@ -1,9 +1,9 @@
-package com.fadhil.storyapp.data.source.remote
+package com.fadhil.storyappexpert.data.source.remote
 
-import com.fadhil.storyapp.constant.ErrorMessage
-import com.fadhil.storyapp.data.Result
-import com.fadhil.storyapp.data.source.remote.response.ApiContentResponse
-import com.fadhil.storyapp.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.constant.ErrorMessage
+import com.fadhil.storyappexpert.data.Result
+import com.fadhil.storyappexpert.data.source.remote.response.ApiContentResponse
+import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.MalformedJsonException

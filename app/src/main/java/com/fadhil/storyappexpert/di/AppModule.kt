@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.di
+package com.fadhil.storyappexpert.di
 
-import com.fadhil.storyapp.data.source.remote.network.StoryApi
-import com.fadhil.storyapp.data.source.remote.network.StoryApiService
+import com.fadhil.storyappexpert.data.source.remote.network.StoryApi
+import com.fadhil.storyappexpert.data.source.remote.network.StoryApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

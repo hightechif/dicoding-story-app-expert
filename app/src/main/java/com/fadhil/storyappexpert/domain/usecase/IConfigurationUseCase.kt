@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.domain.usecase
+package com.fadhil.storyappexpert.domain.usecase
 
-import com.fadhil.storyapp.domain.model.Configuration
-import com.fadhil.storyapp.domain.model.Session
+import com.fadhil.storyappexpert.domain.model.Configuration
+import com.fadhil.storyappexpert.domain.model.Session
 import kotlinx.coroutines.flow.Flow
 
 interface IConfigurationUseCase {

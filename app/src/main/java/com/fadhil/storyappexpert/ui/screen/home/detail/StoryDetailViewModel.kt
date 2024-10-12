@@ -1,10 +1,10 @@
-package com.fadhil.storyapp.ui.screen.home.detail
+package com.fadhil.storyappexpert.ui.screen.home.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.fadhil.storyapp.domain.usecase.IStoryUseCase
+import com.fadhil.storyappexpert.domain.usecase.IStoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

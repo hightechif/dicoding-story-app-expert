@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.util
+package com.fadhil.storyappexpert.util
 
 object StringUtil {
 

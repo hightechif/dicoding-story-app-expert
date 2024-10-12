@@ -1,4 +1,4 @@
-package com.fadhil.storyapp.ui.screen.home.detail
+package com.fadhil.storyappexpert.ui.screen.home.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.fadhil.storyapp.data.ProcessResult
-import com.fadhil.storyapp.data.ProcessResultDelegate
-import com.fadhil.storyapp.databinding.FragmentStoryDetailBinding
-import com.fadhil.storyapp.domain.model.Story
+import com.fadhil.storyappexpert.data.ProcessResult
+import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.databinding.FragmentStoryDetailBinding
+import com.fadhil.storyappexpert.domain.model.Story
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 

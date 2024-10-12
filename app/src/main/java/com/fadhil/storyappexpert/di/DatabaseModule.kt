@@ -1,12 +1,12 @@
-package com.fadhil.storyapp.di
+package com.fadhil.storyappexpert.di
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.room.Room
-import com.fadhil.storyapp.data.source.local.db.AppDatabase
-import com.fadhil.storyapp.data.source.local.prefs.SettingPreferences
-import com.fadhil.storyapp.data.source.local.prefs.dataStore
+import com.fadhil.storyappexpert.data.source.local.db.AppDatabase
+import com.fadhil.storyappexpert.data.source.local.prefs.SettingPreferences
+import com.fadhil.storyappexpert.data.source.local.prefs.dataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

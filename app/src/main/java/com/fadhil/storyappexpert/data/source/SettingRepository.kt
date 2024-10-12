@@ -1,7 +1,7 @@
-package com.fadhil.storyapp.data.source
+package com.fadhil.storyappexpert.data.source
 
-import com.fadhil.storyapp.data.source.local.SettingLocalDataSource
-import com.fadhil.storyapp.domain.repository.ISettingRepository
+import com.fadhil.storyappexpert.data.source.local.SettingLocalDataSource
+import com.fadhil.storyappexpert.domain.repository.ISettingRepository
 import javax.inject.Inject
 
 class SettingRepository @Inject constructor(
