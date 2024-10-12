@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface IConfigurationRepository {
     fun get(): Flow<Configuration?>
-    fun update(session: Session, username: String): Flow<Configuration>
+    fun update(session: Session, email: String): Flow<Configuration>
 }
