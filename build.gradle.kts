@@ -10,6 +10,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.8.0" apply false
     id("com.google.dagger.hilt.android") version "2.44" apply false
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin") version "2.0.1" apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 tasks.register("clean", Delete::class) {
