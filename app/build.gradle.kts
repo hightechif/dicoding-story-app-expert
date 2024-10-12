@@ -92,8 +92,8 @@ val versions by rootProject.extra(
 dependencies {
 
     /** jetpack */
-    implementation("androidx.core:core-ktx:${versions["core_ktx_version"]}")
-    implementation("androidx.appcompat:appcompat:${versions["appcompat_version"]}")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation("androidx.activity:activity-ktx:${versions["activity_ktx_version"]}")
     implementation("androidx.constraintlayout:constraintlayout:${versions["constraintlayout_version"]}")
     implementation("androidx.cardview:cardview:${versions["cardview_version"]}")
@@ -103,7 +103,7 @@ dependencies {
     /** material design */
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("com.google.android.material:material:${versions["material_version"]}")
+    implementation(libs.material)
 
     /** navigation */
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
