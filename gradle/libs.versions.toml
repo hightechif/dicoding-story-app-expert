@@ -1,30 +1,112 @@
 [versions]
+# jetpack
+core_ktx_version = "1.10.1"
+appcompat_version = "1.7.0"
+activity_ktx_version = "1.4.0"
+constraintlayout_version = "2.1.4"
+cardview_version = "1.0.0"
+lifecycle_ktx_version = "2.4.1"
+# material design
+legacy_version = "1.0.0"
+recyclerview_version = "1.2.1"
+material_version = "1.12.0"
+# navigation
+navigation_safeargs_version = "2.5.1"
+navigation_version = "2.5.3"
+gmaps_version = "18.2.0"
+# testing
+core_testing_version = "2.2.0"
+junit_version = "4.13.2"
+junit_ext_version = "1.2.1"
+espresso_core_version = "3.5.1"
+mockito_core_version = "5.6.0"
+mockito_inline_version = "5.2.0"
+coroutines_test_version = "1.7.3"
+# coroutines
+kotlinx_coroutines_version = "1.6.4"
+# local data persistence
+room_version = "2.6.1"
+datastore_version = "1.0.0"
+# networking
+gson_version = "2.9.1"
+retrofit_version = "2.9.0"
+converter_gson_version = "2.9.0"
+logging_interceptor_version = "5.0.0-alpha.5"
+# dependency injection
+hilt_version = "2.44"
+# data object mapper
+mapstruct_kotlin_version = "1.4.0.0"
+maps_struct_version = "1.5.3.Final"
+# supporting lib
+timber_version = "5.0.1"
+circleimageview_version = "3.1.0"
+glide_version = "4.13.1"
+compressor_version = "3.0.1"
 pagingRuntimeKtx = "3.1.0"
-coreTesting = "2.2.0"
-junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-mockitoCore = "5.6.0"
-mockitoInline = "5.2.0"
-recyclerview = "1.3.2"
-retrofit = "2.9.0"
-roomCompiler = "2.5.2"
-roomKtx = "2.5.2"
-roomRuntime = "2.5.2"
-viewpager2 = "1.0.0"
-kotlinxCoroutinesTest = "1.7.3"
+# plugins
+agp_version = "8.2.2"
+kotlin_version = "1.8.0"
+android_app_version = "8.2.2"
+mapsplatform_version = "2.0.1"
 
 [libraries]
+# jetpack
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core_ktx_version" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat_version" }
+activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity_ktx_version" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout_version" }
+cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview_version" }
+livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle_ktx_version" }
+viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle_ktx_version" }
+# material design
+legacy = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy_version" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview_version" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material_version" }
+# navigation
+navigation-safeargs = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation_safeargs_version" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation_version" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation_version" }
+gmaps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "gmaps_version" }
+# testing
+junit = { group = "junit", name = "junit", version.ref = "junit_version" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit_ext_version" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso_core_version" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito_core_version" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito_inline_version" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "core_testing_version" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines_test_version" }
+# coroutines
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx_coroutines_version" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx_coroutines_version" }
+# local data persistence
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room_version" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room_version" }
+room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room_version" }
+datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore_version" }
+# networking
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson_version" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit_version" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converter_gson_version" }
+okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging_interceptor_version" }
+# dependency injection
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt_version" }
+dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt_version" }
+# data object mapper
+pozo-mapstruct-kotlin = { group = "com.github.pozo", name = "mapstruct-kotlin", version.ref = "mapstruct_kotlin_version" }
+pozo-mapstruct-processor = { group = "com.github.pozo", name = "mapstruct-kotlin-processor", version.ref = "mapstruct_kotlin_version" }
+mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref = "maps_struct_version" }
+mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref = "maps_struct_version" }
+# supporting libs
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber_version" }
+circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview_version" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide_version" }
+compressor = { group = "id.zelory", name = "compressor", version.ref = "compressor_version" }
 androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
-androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
-mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
 [plugins]
+android-library = { id = "com.android.library", version.ref = "agp_version" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_version" }
+android-application = { id = "com.android.application", version.ref = "android_app_version" }
+dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt_version" }
+mapsplatform = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsplatform_version" }

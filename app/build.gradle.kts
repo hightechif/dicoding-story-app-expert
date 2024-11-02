@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.fadhil.storyappexpert"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.fadhil.storyappexpert"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -32,83 +32,39 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
-
-val versions by rootProject.extra(
-    mapOf(
-        /** jetpack */
-        "core_ktx_version" to "1.10.1",
-        "appcompat_version" to "1.6.1",
-        "activity_ktx_version" to "1.4.0",
-        "constraintlayout_version" to "2.1.4",
-        "cardview_version" to "1.0.0",
-        "lifecycle_ktx_version" to "2.4.1",
-
-        /** material design */
-        "material_version" to "1.9.0",
-
-        /** testing */
-        "junit_version" to "5.7.2",
-        "junit_ext_version" to "1.1.3",
-        "espresso_core_version" to "3.4.0",
-
-        /** coroutines */
-        "kotlinx_coroutines_version" to "1.6.4",
-
-        /** local storage */
-        "room_version" to "2.4.0-beta01",
-
-        /** networking */
-        "gson_version" to "2.9.1",
-        "retrofit_version" to "2.9.0",
-        "converter_gson_version" to "2.9.0",
-        "logging_interceptor_version" to "5.0.0-alpha.5",
-
-        /** dependencies injection */
-        "dagger_version" to "2.44",
-
-        /** map struct */
-        "mapstruct_kotlin_version" to  "1.4.0.0",
-        "maps_struct_version" to "1.5.3.Final",
-
-        /** supporting lib */
-        "timber_version" to "5.0.1",
-        "circleimageview_version" to "3.1.0",
-        "glide_version" to "4.13.1",
-        "compressor_version" to "3.0.1",
-    )
-)
 
 dependencies {
 
     /** jetpack */
-    implementation("androidx.core:core-ktx:${versions["core_ktx_version"]}")
-    implementation("androidx.appcompat:appcompat:${versions["appcompat_version"]}")
-    implementation("androidx.activity:activity-ktx:${versions["activity_ktx_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:${versions["constraintlayout_version"]}")
-    implementation("androidx.cardview:cardview:${versions["cardview_version"]}")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${versions["lifecycle_ktx_version"]}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions["lifecycle_ktx_version"]}")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.activity.ktx)
+    implementation(libs.constraintlayout)
+    implementation(libs.cardview)
+    implementation(libs.livedata)
+    implementation(libs.viewmodel)
 
     /** material design */
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("com.google.android.material:material:${versions["material_version"]}")
+    implementation(libs.legacy)
+    implementation(libs.recyclerview)
+    implementation(libs.material)
 
     /** navigation */
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.gmaps)
 
     /** testing */
     testImplementation(libs.junit)
@@ -122,40 +78,39 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test) //TestCoroutineDispatcher
 
     /** coroutines */
-    androidTestImplementation("androidx.test.espresso:espresso-core:${versions["espresso_core_version"]}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions["kotlinx_coroutines_version"]}")
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions["kotlinx_coroutines_version"]}")
-
-    /** local storage */
-    implementation("androidx.room:room-runtime:${versions["room_version"]}")
-    kapt("androidx.room:room-compiler:${versions["room_version"]}")
-    implementation("androidx.room:room-ktx:${versions["room_version"]}")
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    implementation("androidx.room:room-paging:${versions["room_version"]}")
-
+    /** local data persistence */
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
+    implementation(libs.datastore.preferences)
 
     /** networking */
-    implementation("com.google.code.gson:gson:${versions["gson_version"]}")
-    implementation("com.squareup.retrofit2:retrofit:${versions["retrofit_version"]}")
-    implementation("com.squareup.retrofit2:converter-gson:${versions["converter_gson_version"]}")
-    implementation("com.squareup.okhttp3:logging-interceptor:${versions["logging_interceptor_version"]}")
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp3.logging.interceptor)
 
-    /** dependencies injection */
-    implementation("com.google.dagger:hilt-android:${versions["dagger_version"]}")
-    kapt("com.google.dagger:hilt-android-compiler:${versions["dagger_version"]}")
+    /** dependency injection */
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
 
-    /** map struct */
-    api("com.github.pozo:mapstruct-kotlin:${versions["mapstruct_kotlin_version"]}")
-    kapt("com.github.pozo:mapstruct-kotlin-processor:${versions["mapstruct_kotlin_version"]}")
-    implementation("org.mapstruct:mapstruct:${versions["maps_struct_version"]}")
-    kapt("org.mapstruct:mapstruct-processor:${versions["maps_struct_version"]}")
+    /** data object mapper */
+    api(libs.pozo.mapstruct.kotlin)
+    kapt(libs.pozo.mapstruct.processor)
+    implementation(libs.mapstruct)
+    kapt(libs.mapstruct.processor)
 
     /** supporting lib */
-    implementation("com.jakewharton.timber:timber:${versions["timber_version"]}")
-    implementation("de.hdodenhof:circleimageview:${versions["circleimageview_version"]}")
-    implementation("com.github.bumptech.glide:glide:${versions["glide_version"]}")
-    implementation("id.zelory:compressor:${versions["compressor_version"]}")
+    implementation(libs.timber)
+    implementation(libs.circleimageview)
+    implementation(libs.glide)
+    implementation(libs.compressor)
     implementation(libs.androidx.paging.runtime.ktx)
+
+    implementation(project(":core"))
 
 }
