@@ -1,7 +1,4 @@
 [versions]
-# core
-agp_version = "8.2.2"
-kotlin_version = "1.8.0"
 # jetpack
 core_ktx_version = "1.10.1"
 appcompat_version = "1.7.0"
@@ -14,6 +11,7 @@ legacy_version = "1.0.0"
 recyclerview_version = "1.2.1"
 material_version = "1.12.0"
 # navigation
+navigation_safeargs_version = "2.5.1"
 navigation_version = "2.5.3"
 gmaps_version = "18.2.0"
 # testing
@@ -35,7 +33,7 @@ retrofit_version = "2.9.0"
 converter_gson_version = "2.9.0"
 logging_interceptor_version = "5.0.0-alpha.5"
 # dependency injection
-dagger_version = "2.44"
+hilt_version = "2.44"
 # data object mapper
 mapstruct_kotlin_version = "1.4.0.0"
 maps_struct_version = "1.5.3.Final"
@@ -45,6 +43,11 @@ circleimageview_version = "3.1.0"
 glide_version = "4.13.1"
 compressor_version = "3.0.1"
 pagingRuntimeKtx = "3.1.0"
+# plugins
+agp_version = "8.2.2"
+kotlin_version = "1.8.0"
+android_app_version = "8.2.2"
+mapsplatform_version = "2.0.1"
 
 [libraries]
 # jetpack
@@ -60,6 +63,7 @@ legacy = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = 
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview_version" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material_version" }
 # navigation
+navigation-safeargs = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation_safeargs_version" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation_version" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation_version" }
 gmaps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "gmaps_version" }
@@ -86,8 +90,8 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converter_gson_version" }
 okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging_interceptor_version" }
 # dependency injection
-dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger_version" }
-dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger_version" }
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt_version" }
+dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt_version" }
 # data object mapper
 pozo-mapstruct-kotlin = { group = "com.github.pozo", name = "mapstruct-kotlin", version.ref = "mapstruct_kotlin_version" }
 pozo-mapstruct-processor = { group = "com.github.pozo", name = "mapstruct-kotlin-processor", version.ref = "mapstruct_kotlin_version" }
@@ -103,3 +107,6 @@ androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", v
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp_version" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_version" }
+android-application = { id = "com.android.application", version.ref = "android_app_version" }
+dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt_version" }
+mapsplatform = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsplatform_version" }
