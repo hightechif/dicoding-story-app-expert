@@ -89,8 +89,9 @@ class RegisterActivity : AppCompatActivity() {
                     override fun success(data: ApiResponse<Any?>?) {
                         hideLoadIndicator()
                         if (data != null) {
-                            intent.putExtra(EXTRA_REGISTRATION_STATUS, data.message)
-                            setResult(RESULT_OK, intent)
+                            val resultIntent = Intent()
+                            resultIntent.putExtra(EXTRA_REGISTRATION_STATUS, data.message)
+                            setResult(RESULT_OK, resultIntent)
                             finish()
                         }
                     }
