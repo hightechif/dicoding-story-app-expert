@@ -10,8 +10,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import androidx.paging.map
-import com.fadhil.storyappexpert.data.NetworkBoundProcessResource
-import com.fadhil.storyappexpert.data.Result
+import com.fadhil.core.data.NetworkBoundProcessResource
+import com.fadhil.core.data.Result
 import com.fadhil.storyappexpert.data.source.local.StoryLocalDataSource
 import com.fadhil.storyappexpert.data.source.remote.StoryRemoteDataSource
 import com.fadhil.storyappexpert.data.source.remote.response.ApiContentResponse

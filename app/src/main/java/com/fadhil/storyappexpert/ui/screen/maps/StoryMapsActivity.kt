@@ -11,8 +11,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.fadhil.storyappexpert.R
-import com.fadhil.storyappexpert.data.ProcessResult
-import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.core.data.ProcessResult
+import com.fadhil.core.data.ProcessResultDelegate
 import com.fadhil.storyappexpert.databinding.ActivityStoryMapsBinding
 import com.fadhil.storyappexpert.domain.model.Story
 import com.google.android.gms.maps.CameraUpdateFactory

@@ -1,6 +1,6 @@
 package com.fadhil.storyappexpert.domain.repository
 
-import com.fadhil.storyappexpert.data.Result
+import com.fadhil.core.data.Result
 import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
 import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
 import kotlinx.coroutines.flow.Flow

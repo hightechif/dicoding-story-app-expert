@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.data
+package com.fadhil.core.data
 
 interface ProcessResultDelegate<T> {
     fun loading()

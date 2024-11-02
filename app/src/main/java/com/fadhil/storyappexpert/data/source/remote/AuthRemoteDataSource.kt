@@ -1,6 +1,6 @@
 package com.fadhil.storyappexpert.data.source.remote
 
-import com.fadhil.storyappexpert.data.Result
+import com.fadhil.core.data.Result
 import com.fadhil.storyappexpert.data.source.remote.network.StoryApiService
 import com.fadhil.storyappexpert.data.source.remote.request.ReqLogin
 import com.fadhil.storyappexpert.data.source.remote.request.ReqRegister

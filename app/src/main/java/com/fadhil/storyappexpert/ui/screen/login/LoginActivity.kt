@@ -9,8 +9,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
-import com.fadhil.storyappexpert.data.ProcessResult
-import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.core.data.ProcessResult
+import com.fadhil.core.data.ProcessResultDelegate
 import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
 import com.fadhil.storyappexpert.databinding.ActivityLoginBinding
 import com.fadhil.storyappexpert.ui.screen.home.HomeActivity

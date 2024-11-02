@@ -5,8 +5,8 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.fadhil.storyappexpert.constant.ErrorMessage
-import com.fadhil.storyappexpert.data.Result
+import com.fadhil.core.constant.ErrorMessage
+import com.fadhil.core.data.Result
 import com.fadhil.storyappexpert.data.source.local.db.AppDatabase
 import com.fadhil.storyappexpert.data.source.local.entity.RemoteKeys
 import com.fadhil.storyappexpert.data.source.local.entity.StoryEntity

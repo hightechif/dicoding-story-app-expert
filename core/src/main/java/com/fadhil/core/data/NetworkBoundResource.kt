@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.data
+package com.fadhil.core.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll

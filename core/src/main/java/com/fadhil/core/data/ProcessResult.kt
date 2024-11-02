@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.data
+package com.fadhil.core.data
 
 open class ProcessResult<T>(result: Result<T>, delegate: ProcessResultDelegate<T>?) {
     init {
