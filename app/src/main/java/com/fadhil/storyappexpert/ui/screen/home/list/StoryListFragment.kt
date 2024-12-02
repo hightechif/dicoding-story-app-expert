@@ -96,6 +96,10 @@ class StoryListFragment : Fragment() {
         binding.fabMap.setOnClickListener {
             StoryMapsActivity.open(requireActivity())
         }
+
+        binding.fabFavorite.setOnClickListener {
+            // TODO: Activate Dynamics Features and open Favorite Activity
+        }
     }
 
     private fun setupObserver() {
