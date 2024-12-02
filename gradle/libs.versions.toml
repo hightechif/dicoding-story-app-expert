@@ -110,3 +110,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_ve
 android-application = { id = "com.android.application", version.ref = "android_app_version" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt_version" }
 mapsplatform = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsplatform_version" }
+android-dynamic-feature = { id = "com.android.dynamic-feature", version.ref = "agp_version" }
