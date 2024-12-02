@@ -15,14 +15,36 @@ interface StoryDao {
     @Insert(entity = StoryEntity::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStory(stories: List<StoryEntity>)
 
-    @Query("SELECT * FROM stories ORDER BY created_time DESC")
+    @Query(
+        "SELECT s.id, s.name, s.description, s.photoUrl, " +
+                "s.created_time, s.lat, s.lon, s.favorite " +
+                "FROM stories s " +
+                "ORDER BY created_time " +
+                "DESC"
+    )
     fun getStories(): Flow<List<StoryEntity>>
 
-    @Query("SELECT * FROM stories ORDER BY created_time DESC")
+    @Query(
+        "SELECT s.id, s.name, s.description, s.photoUrl, " +
+                "s.created_time, s.lat, s.lon, s.favorite " +
+                "FROM stories s " +
+                "ORDER BY created_time " +
+                "DESC"
+    )
     fun getPagingStories(): PagingSource<Int, StoryEntity>
 
     @Update(StoryEntity::class, OnConflictStrategy.REPLACE)
     suspend fun updateData(story: StoryEntity)
+
+    @Query(
+        "SELECT s.id, s.name, s.description, s.photoUrl, " +
+                "s.created_time, s.lat, s.lon, s.favorite " +
+                "FROM stories s " +
+                "WHERE favorite == 1 " +
+                "ORDER BY created_time " +
+                "DESC"
+    )
+    fun getFavorites(): Flow<List<StoryEntity>>
 
     @Query("DELETE FROM stories")
     suspend fun deleteAll()
