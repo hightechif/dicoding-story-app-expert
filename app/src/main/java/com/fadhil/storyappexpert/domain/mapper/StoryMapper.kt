@@ -19,12 +19,23 @@ interface StoryMapper {
     fun mapStoryResponseToEntityList(input: List<ResStory>): List<StoryEntity>
 
     @Mappings(
-        value = [Mapping(target = "createdDate", expression = "java(input.getCreatedLocalDateTime())")]
+        value = [Mapping(
+            target = "createdDate",
+            expression = "java(input.getCreatedLocalDateTime())"
+        )]
     )
     fun mapStoryEntityToDomain(input: StoryEntity): Story
 
     @Mappings
     fun mapStoryEntityToDomainList(input: List<StoryEntity>): List<Story>
+
+    @Mappings(
+        value = [Mapping(
+            target = "createdTime",
+            expression = "java(input.getCreatedTime())"
+        )]
+    )
+    fun mapStoryDomainToEntity(input: Story): StoryEntity
 
     @Mappings(
         value = [Mapping(target = "createdDate", expression = "java(input.getCreatedDate())")]

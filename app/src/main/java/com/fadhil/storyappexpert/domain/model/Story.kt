@@ -10,12 +10,15 @@ data class Story(
     val photoUrl: String?,
     val createdDate: LocalDateTime,
     val lat: Double?,
-    val lon: Double?
+    val lon: Double?,
+    var favorite: Boolean = false
 ) {
 
     fun getCreatedDateDisplay(): String = DateTimeUtil.getUTCLocalDate(
         createdDate,
         "dd MMM yyyy, HH:mm:ss"
     )
+
+    fun getCreatedTime() = createdDate.toInstant(DateTimeUtil.zoneOffsetUTC).toEpochMilli()
 
 }

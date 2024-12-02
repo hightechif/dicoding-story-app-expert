@@ -23,7 +23,10 @@ import com.fadhil.storyappexpert.domain.model.Story
 import com.fadhil.storyappexpert.domain.repository.IStoryRepository
 import com.fadhil.storyappexpert.util.FileUtil
 import com.fadhil.storyappexpert.util.reduceFileImage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -162,6 +165,11 @@ class StoryRepository @Inject constructor(
             }
 
         }.asFlow()
+
+    override suspend fun addToFavorites(story: Story) = withContext(Dispatchers.IO + NonCancellable) {
+        val entity = mapper.mapStoryDomainToEntity(story)
+        localDataSource.updateData(entity)
+    }
 
     private fun uriToFile(imageUri: Uri, context: Context): File {
         val myFile = FileUtil.createCustomTempFile(context)

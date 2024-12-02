@@ -13,7 +13,11 @@ class PagingStoryViewHolder(private val binding: ItemRowStoryBinding) :
             binding.tvTitle.text = story.name
             binding.tvDate.text = story.getCreatedDateDisplay()
             binding.tvDescription.text = story.description
-            binding.root.setOnClickListener {
+            binding.ivFavorite.isSelected = story.favorite
+            binding.ivFavorite.setOnClickListener {
+                delegate?.setOnFavoriteListener(story, position)
+            }
+            binding.clCard.setOnClickListener {
                 delegate?.setOnClickListener(binding.root, story.id)
             }
             Glide.with(binding.root.context).load(story.photoUrl).into(binding.ivStoryIllustration)

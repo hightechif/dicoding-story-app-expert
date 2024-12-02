@@ -41,4 +41,6 @@ interface IStoryRepository {
 
     fun getStoryDetail(id: String): Flow<Result<Story?>>
 
+    suspend fun addToFavorites(story: Story)
+
 }

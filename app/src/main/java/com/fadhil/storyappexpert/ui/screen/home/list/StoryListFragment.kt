@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
+import com.fadhil.storyappexpert.domain.model.Story
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
@@ -20,6 +22,7 @@ import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
 import com.fadhil.storyappexpert.ui.screen.maps.StoryMapsActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class StoryListFragment : Fragment() {
@@ -78,6 +81,14 @@ class StoryListFragment : Fragment() {
                     )
                 view.findNavController().navigate(toDetailUserFragment)
             }
+
+            override fun setOnFavoriteListener(story: Story, position: Int) {
+                lifecycleScope.launch {
+                    viewModel.addToFavorites(story).collect {
+                        if (it) mStoryPagingAdapter.notifyItemChanged(position)
+                    }
+                }
+            }
         }
         mStoryPagingAdapter.delegate = callback
         mStoryPagingAdapter.registerAdapterDataObserver(object :
@@ -98,6 +109,11 @@ class StoryListFragment : Fragment() {
         }
 
         binding.fabFavorite.setOnClickListener {
+            val snackBar = Snackbar.make(
+                binding.root, "Dynamic Feature is under maintenance.",
+                Snackbar.LENGTH_LONG
+            )
+            snackBar.show()
             // TODO: Activate Dynamics Features and open Favorite Activity
         }
     }

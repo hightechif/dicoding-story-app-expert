@@ -33,4 +33,6 @@ interface IStoryUseCase {
         lon: Double?
     ): Flow<Result<FileUploadResponse?>>
 
+    suspend fun addToFavorites(story: Story): Flow<Boolean>
+
 }

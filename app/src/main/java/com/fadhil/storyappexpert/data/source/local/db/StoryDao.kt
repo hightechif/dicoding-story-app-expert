@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.fadhil.storyappexpert.data.source.local.entity.StoryEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -19,6 +20,9 @@ interface StoryDao {
 
     @Query("SELECT * FROM stories ORDER BY created_time DESC")
     fun getPagingStories(): PagingSource<Int, StoryEntity>
+
+    @Update(StoryEntity::class, OnConflictStrategy.REPLACE)
+    suspend fun updateData(story: StoryEntity)
 
     @Query("DELETE FROM stories")
     suspend fun deleteAll()

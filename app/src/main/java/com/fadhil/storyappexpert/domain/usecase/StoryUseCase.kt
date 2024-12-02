@@ -2,7 +2,9 @@ package com.fadhil.storyappexpert.domain.usecase
 
 import android.content.Context
 import android.net.Uri
+import com.fadhil.storyappexpert.domain.model.Story
 import com.fadhil.storyappexpert.domain.repository.IStoryRepository
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
@@ -32,6 +34,17 @@ class StoryUseCase @Inject constructor(
         lat: Double?,
         lon: Double?
     ) = storyRepository.addNewStory(context, description, uri, lat, lon)
+
+    override suspend fun addToFavorites(story: Story) = flow {
+        try {
+            story.favorite = !story.favorite
+            storyRepository.addToFavorites(story)
+            emit(true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(false)
+        }
+    }
 
     companion object {
         @Volatile

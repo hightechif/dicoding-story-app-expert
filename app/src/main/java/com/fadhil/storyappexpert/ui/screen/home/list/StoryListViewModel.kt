@@ -33,4 +33,6 @@ class StoryListViewModel @Inject constructor(
     val stories: LiveData<PagingData<Story>> =
         storyUseCase.getPagingStory(10, 1).cachedIn(viewModelScope)
 
+    suspend fun addToFavorites(story: Story) = storyUseCase.addToFavorites(story)
+
 }
