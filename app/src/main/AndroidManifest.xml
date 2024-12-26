@@ -34,12 +34,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${GOOGLE_MAPS_API_KEY}" />
+            android:value="${googleMapsApiKey}" />
 
-        <activity
-            android:name=".ui.screen.maps.StoryMapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_story_maps" />
         <activity
             android:name=".ui.screen.add.AddStoryActivity"
             android:exported="false" />

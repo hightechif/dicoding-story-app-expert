@@ -1,17 +1,13 @@
-package com.fadhil.storyappexpert.ui.screen.maps
+package com.fadhil.storyappexpert.maps.ui
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.fadhil.storyappexpert.domain.usecase.IStoryUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class StoryMapsViewModel @Inject constructor(
+@dagger.hilt.android.lifecycle.HiltViewModel
+class StoryMapsViewModel @javax.inject.Inject constructor(
     private val storyUseCase: IStoryUseCase
-) : ViewModel() {
+) : androidx.lifecycle.ViewModel() {
 
     val page = MutableLiveData<Int>()
     val size = MutableLiveData<Int>()

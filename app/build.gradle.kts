@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -20,6 +22,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Load credentials.
+        val p = Properties()
+        p.load(project.rootProject.file("local.properties").reader())
+
+        // Share the key with your `AndroidManifest.xml`
+        manifestPlaceholders.put("googleMapsApiKey", p.getProperty("GOOGLE_MAPS_API_KEY") ?: "null")
     }
 
     buildTypes {
@@ -58,16 +67,6 @@ dependencies {
     implementation(libs.viewmodel)
     implementation(libs.preference)
 
-    /** material design */
-    implementation(libs.legacy)
-    implementation(libs.recyclerview)
-    implementation(libs.material)
-
-    /** navigation */
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
-    implementation(libs.gmaps)
-
     /** testing */
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -78,6 +77,16 @@ dependencies {
     //special testing
     testImplementation(libs.androidx.core.testing) // InstantTaskExecutorRule
     testImplementation(libs.kotlinx.coroutines.test) //TestCoroutineDispatcher
+
+    /** material design */
+    implementation(libs.legacy)
+    implementation(libs.recyclerview)
+    implementation(libs.material)
+
+    /** navigation */
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.gmaps)
 
     /** coroutines */
     implementation(libs.kotlinx.coroutines.android)

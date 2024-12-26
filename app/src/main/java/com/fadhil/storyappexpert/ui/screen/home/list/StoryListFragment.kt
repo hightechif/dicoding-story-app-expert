@@ -19,7 +19,6 @@ import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
-import com.fadhil.storyappexpert.ui.screen.maps.StoryMapsActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -105,7 +104,12 @@ class StoryListFragment : Fragment() {
         }
 
         binding.fabMap.setOnClickListener {
-            StoryMapsActivity.open(requireActivity())
+            val snackBar = Snackbar.make(
+                binding.root, "Dynamic Feature is under maintenance.",
+                Snackbar.LENGTH_LONG
+            )
+            snackBar.show()
+            // TODO: Activate Dynamics Features and open maps
         }
 
         binding.fabFavorite.setOnClickListener {
@@ -114,7 +118,7 @@ class StoryListFragment : Fragment() {
                 Snackbar.LENGTH_LONG
             )
             snackBar.show()
-            // TODO: Activate Dynamics Features and open Favorite Activity
+            // TODO: Create and open Favorite Activity
         }
     }
 
