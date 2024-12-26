@@ -2,7 +2,7 @@ package com.fadhil.storyappexpert.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.fadhil.storyappexpert.data.source.local.db.AppDatabase
 import com.fadhil.storyappexpert.data.source.local.prefs.SettingPreferences

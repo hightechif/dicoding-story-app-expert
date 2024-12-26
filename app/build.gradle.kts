@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.livedata)
     implementation(libs.viewmodel)
+    implementation(libs.preference)
 
     /** material design */
     implementation(libs.legacy)
