@@ -35,4 +35,5 @@
     <string name="title_activity_story_maps">StoryMapsActivity</string>
     <string name="retry">Coba lagi</string>
     <string name="title_favorite">Module Title</string>
+    <string name="title_maps">maps</string>
 </resources>

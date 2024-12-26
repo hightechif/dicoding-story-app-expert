@@ -9,8 +9,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
-import com.fadhil.core.data.ProcessResult
-import com.fadhil.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
 import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
 import com.fadhil.storyappexpert.databinding.ActivityRegisterBinding
 import com.fadhil.storyappexpert.util.StringUtil.Empty

@@ -1,7 +1,7 @@
 package com.fadhil.storyappexpert.data.source.remote
 
-import com.fadhil.core.constant.ErrorMessage
-import com.fadhil.core.data.Result
+import com.fadhil.storyappexpert.core.constant.ErrorMessage
+import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.data.source.remote.response.ApiContentResponse
 import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
 import com.google.gson.Gson

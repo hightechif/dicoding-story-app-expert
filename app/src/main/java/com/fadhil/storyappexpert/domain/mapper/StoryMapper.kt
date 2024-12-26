@@ -11,7 +11,10 @@ import org.mapstruct.Mappings
 interface StoryMapper {
 
     @Mappings(
-        value = [Mapping(target = "createdTime", expression = "java(input.getCreatedTime())")]
+        value = [
+            Mapping(target = "createdTime", expression = "java(input.getCreatedTime())"),
+            Mapping(target = "favorite", ignore = true)
+        ]
     )
     fun mapStoryResponseToEntity(input: ResStory): StoryEntity
 
@@ -38,7 +41,10 @@ interface StoryMapper {
     fun mapStoryDomainToEntity(input: Story): StoryEntity
 
     @Mappings(
-        value = [Mapping(target = "createdDate", expression = "java(input.getCreatedDate())")]
+        value = [
+            Mapping(target = "createdDate", expression = "java(input.getCreatedDate())"),
+            Mapping(target = "favorite", ignore = true)
+        ]
     )
     fun mapStoryResponseToDomain(input: ResStory): Story
 

@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
-import com.fadhil.core.data.Result
+import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
 import com.fadhil.storyappexpert.domain.model.Story
 import kotlinx.coroutines.flow.Flow

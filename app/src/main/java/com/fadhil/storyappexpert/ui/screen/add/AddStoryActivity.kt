@@ -22,9 +22,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.fadhil.storyappexpert.R
-import com.fadhil.core.data.ProcessResult
-import com.fadhil.core.data.ProcessResultDelegate
-import com.fadhil.core.data.Result
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
 import com.fadhil.storyappexpert.databinding.ActivityAddStoryBinding
 import com.fadhil.storyappexpert.util.CameraUtils

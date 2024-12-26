@@ -1,7 +1,7 @@
 package com.fadhil.storyappexpert.data.source
 
-import com.fadhil.core.data.NetworkBoundProcessResource
-import com.fadhil.core.data.Result
+import com.fadhil.storyappexpert.core.data.NetworkBoundProcessResource
+import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.data.source.local.ConfigurationLocalDataSource
 import com.fadhil.storyappexpert.data.source.remote.AuthRemoteDataSource
 import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse

@@ -1,6 +1,6 @@
 package com.fadhil.storyappexpert.domain.usecase
 
-import com.fadhil.core.data.Result
+import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
 import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
 import kotlinx.coroutines.flow.Flow
