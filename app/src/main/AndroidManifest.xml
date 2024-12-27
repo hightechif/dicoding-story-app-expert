@@ -37,10 +37,10 @@
             android:value="${googleMapsApiKey}" />
 
         <activity
-            android:name=".ui.screen.add.AddStoryActivity"
+            android:name="com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.screen.splash.SplashActivity"
+            android:name="com.fadhil.storyappexpert.ui.screen.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -50,13 +50,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.screen.register.RegisterActivity"
+            android:name="com.fadhil.storyappexpert.ui.screen.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.screen.login.LoginActivity"
+            android:name="com.fadhil.storyappexpert.ui.screen.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.screen.home.HomeActivity"
+            android:name="com.fadhil.storyappexpert.ui.screen.home.HomeActivity"
             android:exported="false"
             android:theme="@style/HomeTheme" />
 

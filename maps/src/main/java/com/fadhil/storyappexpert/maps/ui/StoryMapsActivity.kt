@@ -4,25 +4,28 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.fadhil.storyappexpert.core.data.ProcessResult
-import com.fadhil.storyappexpert.domain.model.Story
+import com.fadhil.storyappexpert.maps.R
 import com.fadhil.storyappexpert.maps.databinding.ActivityStoryMapsBinding
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
-@dagger.hilt.android.AndroidEntryPoint
-class StoryMapsActivity : androidx.appcompat.app.AppCompatActivity(),
-    com.google.android.gms.maps.OnMapReadyCallback {
+class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: com.google.android.gms.maps.GoogleMap
+    private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityStoryMapsBinding
     private val viewModel: StoryMapsViewModel by viewModels()
 
     private val requestPermissionLauncher =
-        registerForActivityResult(
-            androidx.activity.result.contract.ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
                 getMyLocation()
             }
@@ -44,7 +47,7 @@ class StoryMapsActivity : androidx.appcompat.app.AppCompatActivity(),
     private fun setupView() {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment =
-            supportFragmentManager.findFragmentById(com.fadhil.storyappexpert.maps.R.id.map) as com.google.android.gms.maps.SupportMapFragment
+            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -69,7 +72,7 @@ class StoryMapsActivity : androidx.appcompat.app.AppCompatActivity(),
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    override fun onMapReady(googleMap: com.google.android.gms.maps.GoogleMap) {
+    override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
         mMap.uiSettings.isZoomControlsEnabled = true
@@ -88,22 +91,22 @@ class StoryMapsActivity : androidx.appcompat.app.AppCompatActivity(),
         snippet: String,
         zoom: Float? = null
     ) {
-        val latLng = com.google.android.gms.maps.model.LatLng(lat, long)
+        val latLng = LatLng(lat, long)
         mMap.addMarker(
-            com.google.android.gms.maps.model.MarkerOptions()
+            MarkerOptions()
                 .position(latLng)
                 .title(title)
                 .snippet(snippet)
         )
         if (zoom != null) {
             mMap.animateCamera(
-                com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(
+                CameraUpdateFactory.newLatLngZoom(
                     latLng,
                     zoom
                 )
             )
         } else {
-            mMap.moveCamera(com.google.android.gms.maps.CameraUpdateFactory.newLatLng(latLng))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         }
     }
 
@@ -123,37 +126,34 @@ class StoryMapsActivity : androidx.appcompat.app.AppCompatActivity(),
         viewModel.setPage(0)
         viewModel.setSize(10)
         viewModel.setLocation(1)
-        viewModel.getAllStories(true)
-            .observe(this) {
-                ProcessResult(
-                    it,
-                    object :
-                        com.fadhil.storyappexpert.core.data.ProcessResultDelegate<List<Story>?> {
-                        override fun loading() {
-                        }
-
-                        override fun error(code: String?, message: String?) {
-                        }
-
-                        override fun unAuthorize(message: String?) {
-                        }
-
-                        override fun success(data: List<Story>?) {
-                            if (data?.isNotEmpty() == true) {
-                                data.forEach { story ->
-                                    if (story.lat != null && story.lon != null)
-                                        drawMarker(
-                                            story.lat!!,
-                                            story.lon!!,
-                                            story.name,
-                                            story.description
-                                        )
-                                }
-                            }
-                        }
-
-                    })
-            }
+//        viewModel.getAllStories(true)
+//            .observe(this) {
+//                ProcessResult(it, object : ProcessResultDelegate<List<Story>?> {
+//                    override fun loading() {
+//                    }
+//
+//                    override fun error(code: String?, message: String?) {
+//                    }
+//
+//                    override fun unAuthorize(message: String?) {
+//                    }
+//
+//                    override fun success(data: List<Story>?) {
+//                        if (data?.isNotEmpty() == true) {
+//                            data.forEach { story ->
+//                                if (story.lat != null && story.lon != null)
+//                                    drawMarker(
+//                                        story.lat!!,
+//                                        story.lon!!,
+//                                        story.name,
+//                                        story.description
+//                                    )
+//                            }
+//                        }
+//                    }
+//
+//                })
+//            }
     }
 
     companion object {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
 import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
 import com.fadhil.storyappexpert.domain.model.Story
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
@@ -22,9 +24,10 @@ import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
-class StoryListFragment : Fragment() {
+class StoryListFragment : Fragment(), ModuleNavigator {
 
     private lateinit var binding: FragmentStoryListBinding
     private val viewModel: StoryListViewModel by viewModels()
@@ -104,12 +107,13 @@ class StoryListFragment : Fragment() {
         }
 
         binding.fabMap.setOnClickListener {
-            val snackBar = Snackbar.make(
-                binding.root, "Dynamic Feature is under maintenance.",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.show()
-            // TODO: Activate Dynamics Features and open maps
+            try {
+                navigateToStoryMapsActivity()
+            } catch (e: Exception){
+                e.printStackTrace()
+                Timber.e(e)
+                Toast.makeText(requireContext(), "Module not found", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.fabFavorite.setOnClickListener {

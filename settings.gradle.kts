@@ -1,11 +1,7 @@
 import java.net.URI
 
-include(":maps")
-
-
-
 include(":core")
-
+include(":maps")
 
 pluginManagement {
     repositories {

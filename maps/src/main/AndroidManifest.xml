@@ -24,7 +24,7 @@
         android:theme="@style/Theme.StoryApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.StoryMapsActivity"
+            android:name="com.fadhil.storyappexpert.maps.ui.StoryMapsActivity"
             android:exported="false"
             android:label="@string/title_activity_story_maps" />
     </application>

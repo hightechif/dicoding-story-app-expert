@@ -2,6 +2,7 @@
 buildscript {
     dependencies {
         classpath(libs.navigation.safeargs)
+        classpath(libs.navigation.quadrant)
     }
 }
 
