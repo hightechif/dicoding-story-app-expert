@@ -118,7 +118,7 @@ class StoryListFragment : Fragment(), ModuleNavigator {
 
         binding.fabFavorite.setOnClickListener {
             val snackBar = Snackbar.make(
-                binding.root, "Dynamic Feature is under maintenance.",
+                binding.root, "Feature is under maintenance.",
                 Snackbar.LENGTH_LONG
             )
             snackBar.show()
