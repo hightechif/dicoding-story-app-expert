@@ -6,24 +6,26 @@ import com.fadhil.storyappexpert.core.data.source.remote.request.ReqLogin
 import com.fadhil.storyappexpert.core.data.source.remote.request.ReqRegister
 import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
 import com.fadhil.storyappexpert.core.data.source.remote.response.ResLogin
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class AuthRemoteDataSource @Inject constructor(
     private val service: StoryApiService
 ) : BaseRemoteDataSource() {
 
-    suspend fun register(
+    fun register(
         name: String,
         email: String,
         password: String
-    ): Result<ApiResponse<Any?>?> {
+    ): Flow<Result<ApiResponse<Any?>?>> = flow {
         val request = ReqRegister(name, email, password)
-        return getResult { service.register(request) }
+        emit(getResult { service.register(request) })
     }
 
-    suspend fun login(email: String, password: String): Result<ApiResponse<ResLogin>?> {
+    fun login(email: String, password: String): Flow<Result<ApiResponse<ResLogin>?>> = flow {
         val request = ReqLogin(email, password)
-        return getResult { service.login(request) }
+        emit(getResult { service.login(request) })
     }
 
 }

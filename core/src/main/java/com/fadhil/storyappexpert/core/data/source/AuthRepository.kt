@@ -23,7 +23,7 @@ class AuthRepository @Inject constructor(
         password: String
     ): Flow<Result<ApiResponse<Any?>?>> =
         object : NetworkBoundProcessResource<ApiResponse<Any?>?, ApiResponse<Any?>?>() {
-            override suspend fun createCall(): Result<ApiResponse<Any?>?> =
+            override suspend fun createCall(): Flow<Result<ApiResponse<Any?>?>> =
                 remoteSource.register(name, email, password)
 
             override suspend fun callBackResult(data: ApiResponse<Any?>?): ApiResponse<Any?>? {
@@ -39,7 +39,7 @@ class AuthRepository @Inject constructor(
 
     override fun login(email: String, password: String): Flow<Result<ResLogin?>> =
         object : NetworkBoundProcessResource<ResLogin?, ApiResponse<ResLogin>?>() {
-            override suspend fun createCall(): Result<ApiResponse<ResLogin>?> =
+            override suspend fun createCall(): Flow<Result<ApiResponse<ResLogin>?>> =
                 remoteSource.login(email, password)
 
             override suspend fun callBackResult(data: ApiResponse<ResLogin>?): ResLogin? {

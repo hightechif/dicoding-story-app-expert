@@ -45,9 +45,8 @@ class StoryRepository @javax.inject.Inject constructor(
         lat: Double?,
         lon: Double?
     ): Flow<Result<FileUploadResponse?>> =
-        object :
-            NetworkBoundProcessResource<FileUploadResponse?, FileUploadResponse?>() {
-            override suspend fun createCall(): Result<FileUploadResponse?> {
+        object : NetworkBoundProcessResource<FileUploadResponse?, FileUploadResponse?>() {
+            override suspend fun createCall(): Flow<Result<FileUploadResponse?>> {
                 val imageFile = uriToFile(uri, context).reduceFileImage()
 
                 val multipartBody = createPart("photo", imageFile)
@@ -77,7 +76,7 @@ class StoryRepository @javax.inject.Inject constructor(
     ): Flow<Result<FileUploadResponse?>> =
         object :
             NetworkBoundProcessResource<FileUploadResponse?, FileUploadResponse?>() {
-            override suspend fun createCall(): Result<FileUploadResponse?> {
+            override suspend fun createCall(): Flow<Result<FileUploadResponse?>> {
                 val imageFile = uriToFile(uri, context).reduceFileImage()
 
                 val multipartBody = createPart("photo-guest", imageFile)
@@ -112,7 +111,7 @@ class StoryRepository @javax.inject.Inject constructor(
         object :
             NetworkBoundProcessResource<List<Story>, ApiContentResponse<ResStory>?>() {
 
-            override suspend fun createCall(): Result<ApiContentResponse<ResStory>?> {
+            override suspend fun createCall(): Flow<Result<ApiContentResponse<ResStory>?>> {
                 return remoteDataSource.getAllStories(page, size, location)
             }
 
@@ -152,7 +151,7 @@ class StoryRepository @javax.inject.Inject constructor(
         object :
             NetworkBoundProcessResource<Story?, ApiResponse<ResStory>?>() {
 
-            override suspend fun createCall(): Result<ApiResponse<ResStory>?> {
+            override suspend fun createCall(): Flow<Result<ApiResponse<ResStory>?>> {
                 return remoteDataSource.getStoryDetail(id)
             }
 
