@@ -110,12 +110,6 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 
-    /** data object mapper */
-    api(libs.pozo.mapstruct.kotlin)
-    kapt(libs.pozo.mapstruct.processor)
-    implementation(libs.mapstruct)
-    kapt(libs.mapstruct.processor)
-
     /** supporting lib */
     implementation(libs.timber)
     implementation(libs.circleimageview)

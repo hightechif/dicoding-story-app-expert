@@ -2,8 +2,8 @@ package com.fadhil.storyappexpert.ui.screen.home.list.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.databinding.ItemRowStoryBinding
-import com.fadhil.storyappexpert.domain.model.Story
 
 class PagingStoryViewHolder(private val binding: ItemRowStoryBinding) :
     RecyclerView.ViewHolder(binding.root) {

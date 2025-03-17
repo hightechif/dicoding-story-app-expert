@@ -13,9 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
 import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
-import com.fadhil.storyappexpert.domain.model.Story
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter

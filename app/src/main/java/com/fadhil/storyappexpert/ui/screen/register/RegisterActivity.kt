@@ -11,9 +11,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import com.fadhil.storyappexpert.core.data.ProcessResult
 import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
-import com.fadhil.storyappexpert.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.core.util.StringUtil.Empty
 import com.fadhil.storyappexpert.databinding.ActivityRegisterBinding
-import com.fadhil.storyappexpert.util.StringUtil.Empty
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 

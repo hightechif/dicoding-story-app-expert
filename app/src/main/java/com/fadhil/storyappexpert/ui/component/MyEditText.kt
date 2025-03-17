@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatEditText
 import com.fadhil.storyappexpert.R
-import com.fadhil.storyappexpert.util.ConvertUtils.dp
+import com.fadhil.storyappexpert.core.util.ConvertUtils.dp
 
 
 class MyEditText : AppCompatEditText {

@@ -1,7 +1,12 @@
+import org.gradle.kotlin.dsl.android
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("com.gaelmarhic.quadrant")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -40,4 +45,28 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.paging.runtime.ktx)
+
+    /** local data persistence */
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
+    implementation(libs.datastore.preferences)
+
+    /** networking */
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp3.logging.interceptor)
+
+    /** data object mapper */
+    api(libs.pozo.mapstruct.kotlin)
+    kapt(libs.pozo.mapstruct.processor)
+    implementation(libs.mapstruct)
+    kapt(libs.mapstruct.processor)
+
+    /** dependency injection */
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
 }
