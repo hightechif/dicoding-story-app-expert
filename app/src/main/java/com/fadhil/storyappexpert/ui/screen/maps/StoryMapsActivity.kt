@@ -1,23 +1,30 @@
-package com.fadhil.storyappexpert.maps.ui
+package com.fadhil.storyappexpert.ui.screen.maps
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.fadhil.storyappexpert.maps.R
-import com.fadhil.storyappexpert.maps.databinding.ActivityStoryMapsBinding
+import androidx.fragment.app.FragmentActivity
+import com.fadhil.storyappexpert.R
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.domain.model.Story
+import com.fadhil.storyappexpert.databinding.ActivityStoryMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
@@ -35,7 +42,9 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityStoryMapsBinding.inflate(layoutInflater)
+        binding = ActivityStoryMapsBinding.inflate(
+            layoutInflater
+        )
         setContentView(binding.root)
 
         setupView()
@@ -126,40 +135,41 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         viewModel.setPage(0)
         viewModel.setSize(10)
         viewModel.setLocation(1)
-//        viewModel.getAllStories(true)
-//            .observe(this) {
-//                ProcessResult(it, object : ProcessResultDelegate<List<Story>?> {
-//                    override fun loading() {
-//                    }
-//
-//                    override fun error(code: String?, message: String?) {
-//                    }
-//
-//                    override fun unAuthorize(message: String?) {
-//                    }
-//
-//                    override fun success(data: List<Story>?) {
-//                        if (data?.isNotEmpty() == true) {
-//                            data.forEach { story ->
-//                                if (story.lat != null && story.lon != null)
-//                                    drawMarker(
-//                                        story.lat!!,
-//                                        story.lon!!,
-//                                        story.name,
-//                                        story.description
-//                                    )
-//                            }
-//                        }
-//                    }
-//
-//                })
-//            }
+        viewModel.getAllStories(true)
+            .observe(this) {
+                ProcessResult(it, object : ProcessResultDelegate<List<Story>?> {
+                    override fun loading() {
+                    }
+
+                    override fun error(code: String?, message: String?) {
+                    }
+
+                    override fun unAuthorize(message: String?) {
+                    }
+
+                    override fun success(data: List<Story>?) {
+                        if (data?.isNotEmpty() == true) {
+                            data.forEach { story ->
+                                if (story.lat != null && story.lon != null)
+                                    drawMarker(
+                                        story.lat!!,
+                                        story.lon!!,
+                                        story.name,
+                                        story.description,
+                                        4F
+                                    )
+                            }
+                        }
+                    }
+
+                })
+            }
     }
 
     companion object {
         fun open(
-            originActivity: androidx.fragment.app.FragmentActivity,
-            resultLauncher: androidx.activity.result.ActivityResultLauncher<Intent>? = null
+            originActivity: FragmentActivity,
+            resultLauncher: ActivityResultLauncher<Intent>? = null
         ) {
             val intent = Intent(originActivity, StoryMapsActivity::class.java)
             if (resultLauncher != null) {
