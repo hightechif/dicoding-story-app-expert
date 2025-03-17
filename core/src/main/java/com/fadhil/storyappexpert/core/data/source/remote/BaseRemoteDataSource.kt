@@ -2,7 +2,10 @@ package com.fadhil.storyappexpert.core.data.source.remote
 
 import com.fadhil.storyappexpert.core.constant.ErrorMessage
 import com.fadhil.storyappexpert.core.data.Result
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.nio.charset.Charset
@@ -19,13 +22,13 @@ abstract class BaseRemoteDataSource {
             if (response.isSuccessful) {
                 val body = response.body()
                 return if (body != null) {
-                    if (body is com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<*>) {
+                    if (body is ApiResponse<*>) {
                         if (body.isSuccess()) {
                             Result.Success(body)
                         } else {
                             Result.Error(code.toString(), body.message)
                         }
-                    } else if (body is com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse<*>) {
+                    } else if (body is ApiContentResponse<*>) {
                         if (body.isSuccess()) {
                             Result.Success(body)
                         } else {
@@ -47,10 +50,9 @@ abstract class BaseRemoteDataSource {
                             bufferedSource.buffer.clone().readString(Charset.forName("UTF8"))
 
                         try {
-                            val badResponse = com.google.gson.Gson()
-                                .fromJson<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<Any>?>(
+                            val badResponse = Gson().fromJson<ApiResponse<Any>?>(
                                 json,
-                                object : com.google.gson.reflect.TypeToken<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<Any>?>() {}.type
+                                object : TypeToken<ApiResponse<Any>?>() {}.type
                             )
                             if (badResponse.loginResult != null) {
                                 Result.Unauthorized(badResponse.message)
@@ -58,6 +60,7 @@ abstract class BaseRemoteDataSource {
                                 Result.Unauthorized(badResponse.message)
                             }
                         } catch (e: Exception) {
+                            e.printStackTrace()
                             Result.Unauthorized(json)
                         }
                     } else {
@@ -66,17 +69,18 @@ abstract class BaseRemoteDataSource {
                 } else
                     if (code == 400 || code == 500) {
                         if (response.errorBody() != null) {
-                            val bufferedSource: okio.BufferedSource = response.errorBody()!!.source()
+                            val bufferedSource: okio.BufferedSource =
+                                response.errorBody()!!.source()
                             bufferedSource.request(Long.MAX_VALUE) // Buffer the entire body.
 
                             val json =
                                 bufferedSource.buffer.clone().readString(Charset.forName("UTF8"))
 
-                            val badResponse = com.google.gson.Gson()
-                                .fromJson<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<Any>?>(
-                                json,
-                                object : com.google.gson.reflect.TypeToken<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<Any>?>() {}.type
-                            )
+                            val badResponse = Gson()
+                                .fromJson<ApiResponse<Any>?>(
+                                    json,
+                                    object : TypeToken<ApiResponse<Any>?>() {}.type
+                                )
                             return Result.Error(code.toString(), badResponse.message)
                         }
                     } else if (code == 503) {

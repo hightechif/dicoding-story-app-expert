@@ -1,12 +1,21 @@
 package com.fadhil.storyappexpert.core.data.source.remote.network
 
+import com.fadhil.storyappexpert.core.data.source.remote.request.ReqLogin
+import com.fadhil.storyappexpert.core.data.source.remote.request.ReqRegister
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.core.data.source.remote.response.ResStory
+import retrofit2.Response
+
 interface StoryApiService {
 
     @retrofit2.http.POST("register")
-    suspend fun register(@retrofit2.http.Body body: com.fadhil.storyappexpert.core.data.source.remote.request.ReqRegister): retrofit2.Response<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<Any?>?>
+    suspend fun register(@retrofit2.http.Body body: ReqRegister): Response<ApiResponse<Any?>?>
 
     @retrofit2.http.POST("login")
-    suspend fun login(@retrofit2.http.Body body: com.fadhil.storyappexpert.core.data.source.remote.request.ReqLogin): retrofit2.Response<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResLogin>?>
+    suspend fun login(@retrofit2.http.Body body: ReqLogin): Response<ApiResponse<ResLogin>?>
 
     @retrofit2.http.Multipart
     @retrofit2.http.POST("stories")
@@ -15,25 +24,25 @@ interface StoryApiService {
         @retrofit2.http.Part("description") description: okhttp3.RequestBody,
         @retrofit2.http.Part("lat") lat: okhttp3.RequestBody?,
         @retrofit2.http.Part("lon") lon: okhttp3.RequestBody?
-    ): retrofit2.Response<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?>
+    ): Response<FileUploadResponse?>
 
     @retrofit2.http.Multipart
     @retrofit2.http.POST("stories/guest")
     suspend fun addNewStoryAsGuest(
         @retrofit2.http.Part file: okhttp3.MultipartBody.Part,
         @retrofit2.http.Part("description") description: okhttp3.RequestBody
-    ): retrofit2.Response<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?>
+    ): Response<FileUploadResponse?>
 
     @retrofit2.http.GET("stories")
     suspend fun getAllStories(
         @retrofit2.http.Query("page") page: Int?,
         @retrofit2.http.Query("size") size: Int?,
         @retrofit2.http.Query("location") location: Int?
-    ): retrofit2.Response<com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?>
+    ): Response<ApiContentResponse<ResStory>?>
 
     @retrofit2.http.GET("stories/{id}")
     suspend fun getStoryDetail(
         @retrofit2.http.Path("id") id: String,
-    ): retrofit2.Response<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?>
+    ): Response<ApiResponse<ResStory>?>
 
 }

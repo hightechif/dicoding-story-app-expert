@@ -9,6 +9,10 @@ import androidx.paging.liveData
 import androidx.paging.map
 import com.fadhil.storyappexpert.core.data.NetworkBoundProcessResource
 import com.fadhil.storyappexpert.core.data.Result
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.core.data.source.remote.response.ResStory
 import com.fadhil.storyappexpert.core.domain.mapper.StoryMapper
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.domain.repository.IStoryRepository
@@ -40,10 +44,10 @@ class StoryRepository @javax.inject.Inject constructor(
         uri: Uri,
         lat: Double?,
         lon: Double?
-    ): Flow<Result<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?>> =
+    ): Flow<Result<FileUploadResponse?>> =
         object :
-            NetworkBoundProcessResource<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?, com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?>() {
-            override suspend fun createCall(): Result<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?> {
+            NetworkBoundProcessResource<FileUploadResponse?, FileUploadResponse?>() {
+            override suspend fun createCall(): Result<FileUploadResponse?> {
                 val imageFile = uriToFile(uri, context).reduceFileImage()
 
                 val multipartBody = createPart("photo", imageFile)
@@ -59,7 +63,7 @@ class StoryRepository @javax.inject.Inject constructor(
                 )
             }
 
-            override suspend fun callBackResult(data: com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?): com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse? {
+            override suspend fun callBackResult(data: FileUploadResponse?): FileUploadResponse? {
                 return data
             }
         }.asFlow()
@@ -70,10 +74,10 @@ class StoryRepository @javax.inject.Inject constructor(
         uri: Uri,
         lat: Double?,
         lon: Double?
-    ): Flow<Result<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?>> =
+    ): Flow<Result<FileUploadResponse?>> =
         object :
-            NetworkBoundProcessResource<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?, com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?>() {
-            override suspend fun createCall(): Result<com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?> {
+            NetworkBoundProcessResource<FileUploadResponse?, FileUploadResponse?>() {
+            override suspend fun createCall(): Result<FileUploadResponse?> {
                 val imageFile = uriToFile(uri, context).reduceFileImage()
 
                 val multipartBody = createPart("photo-guest", imageFile)
@@ -82,7 +86,7 @@ class StoryRepository @javax.inject.Inject constructor(
                 return remoteDataSource.addNewStoryAsGuest(multipartBody, requestBody)
             }
 
-            override suspend fun callBackResult(data: com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse?): com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse? {
+            override suspend fun callBackResult(data: FileUploadResponse?): FileUploadResponse? {
                 return data
             }
         }.asFlow()
@@ -106,13 +110,13 @@ class StoryRepository @javax.inject.Inject constructor(
         reload: Boolean
     ): Flow<Result<List<Story>>> =
         object :
-            NetworkBoundProcessResource<List<Story>, com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?>() {
+            NetworkBoundProcessResource<List<Story>, ApiContentResponse<ResStory>?>() {
 
-            override suspend fun createCall(): Result<com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?> {
+            override suspend fun createCall(): Result<ApiContentResponse<ResStory>?> {
                 return remoteDataSource.getAllStories(page, size, location)
             }
 
-            override suspend fun callBackResult(data: com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?): List<Story> {
+            override suspend fun callBackResult(data: ApiContentResponse<ResStory>?): List<Story> {
                 return mapper.mapStoryResponseToDomainList(data?.listStory ?: emptyList())
             }
 
@@ -146,13 +150,13 @@ class StoryRepository @javax.inject.Inject constructor(
 
     override fun getStoryDetail(id: String): Flow<Result<Story?>> =
         object :
-            NetworkBoundProcessResource<Story?, com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?>() {
+            NetworkBoundProcessResource<Story?, ApiResponse<ResStory>?>() {
 
-            override suspend fun createCall(): Result<com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?> {
+            override suspend fun createCall(): Result<ApiResponse<ResStory>?> {
                 return remoteDataSource.getStoryDetail(id)
             }
 
-            override suspend fun callBackResult(data: com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse<com.fadhil.storyappexpert.core.data.source.remote.response.ResStory>?): Story? {
+            override suspend fun callBackResult(data: ApiResponse<ResStory>?): Story? {
                 return data?.story?.let { mapper.mapStoryResponseToDomain(it) }
             }
 
