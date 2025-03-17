@@ -59,6 +59,9 @@
             android:name="com.fadhil.storyappexpert.ui.screen.home.HomeActivity"
             android:exported="false"
             android:theme="@style/HomeTheme" />
+        <activity
+            android:name="com.fadhil.storyappexpert.ui.screen.maps.StoryMapsActivity"
+            android:exported="false" />
 
         <!-- Trigger Google Play services to install the backported photo picker module. -->
         <!--suppress AndroidDomInspection -->
