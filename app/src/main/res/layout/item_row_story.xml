@@ -8,6 +8,7 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -50,18 +51,31 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/dimen_8dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:textSize="@dimen/text_16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivFavorite"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             app:layout_constraintVertical_bias="0.0"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis justo nec nisi mattis, sit amet efficitur dui tempor. Aenean ullamcorper luctus nibh vitae tempus. Praesent id lacus vestibulum, pulvinar felis eu, gravida sem. Proin id gravida lacus, ut dapibus metus. Integer non venenatis tortor, rutrum condimentum diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dapibus fermentum magna, vitae convallis est venenatis porttitor. Proin blandit, nisl at mollis dignissim, lacus enim efficitur nisi, ut scelerisque odio mi quis elit. Cras euismod commodo nisi ut luctus. Nulla iaculis sagittis lacus, ut consectetur metus consequat sit amet." />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="@dimen/dimen_32dp"
+            android:layout_height="@dimen/dimen_32dp"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_favorite"
+            android:tint="@color/secondaryColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvDescription"
+            app:layout_constraintVertical_bias="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

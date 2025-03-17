@@ -2,6 +2,7 @@
 buildscript {
     dependencies {
         classpath(libs.navigation.safeargs)
+        classpath(libs.navigation.quadrant)
     }
 }
 
@@ -11,6 +12,7 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.dagger.hilt.android) apply false
     alias(libs.plugins.mapsplatform) apply false
+    alias(libs.plugins.android.dynamic.feature) apply false
 }
 
 tasks.register("clean", Delete::class) {

@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.fadhil.storyappexpert.domain.model.Story
-import com.fadhil.storyappexpert.domain.usecase.IStoryUseCase
+import com.fadhil.storyappexpert.core.domain.model.Story
+import com.fadhil.storyappexpert.core.domain.usecase.IStoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -32,5 +32,7 @@ class StoryListViewModel @Inject constructor(
 
     val stories: LiveData<PagingData<Story>> =
         storyUseCase.getPagingStory(10, 1).cachedIn(viewModelScope)
+
+    suspend fun addToFavorites(story: Story) = storyUseCase.addToFavorites(story)
 
 }

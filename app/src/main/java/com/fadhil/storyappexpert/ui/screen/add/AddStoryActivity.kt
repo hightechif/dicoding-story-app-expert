@@ -21,13 +21,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.fadhil.storyappexpert.BuildConfig
 import com.fadhil.storyappexpert.R
-import com.fadhil.storyappexpert.data.ProcessResult
-import com.fadhil.storyappexpert.data.ProcessResultDelegate
-import com.fadhil.storyappexpert.data.Result
-import com.fadhil.storyappexpert.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.data.Result
+import com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.core.util.CameraUtils
 import com.fadhil.storyappexpert.databinding.ActivityAddStoryBinding
-import com.fadhil.storyappexpert.util.CameraUtils
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -201,8 +202,8 @@ class AddStoryActivity : AppCompatActivity(), LocationListener {
                 }
             }
         } catch (e: Exception) {
-            //e.printStackTrace();
-            Timber.e("Impossible to connect to LocationManager", e)
+            e.printStackTrace()
+            Timber.e("Impossible to connect to LocationManager")
         }
     }
 
@@ -217,7 +218,7 @@ class AddStoryActivity : AppCompatActivity(), LocationListener {
     }
 
     private fun startCamera() {
-        currentImageUri = CameraUtils.getImageUri(this)
+        currentImageUri = CameraUtils.getImageUri(this, BuildConfig.APPLICATION_ID)
         launcherIntentCamera.launch(currentImageUri)
     }
 

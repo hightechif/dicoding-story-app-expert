@@ -9,10 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.fadhil.storyappexpert.data.ProcessResult
-import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.databinding.FragmentStoryDetailBinding
-import com.fadhil.storyappexpert.domain.model.Story
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 

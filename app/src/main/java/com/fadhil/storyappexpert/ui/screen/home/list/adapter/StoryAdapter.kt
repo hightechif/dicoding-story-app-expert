@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.databinding.ItemRowStoryBinding
-import com.fadhil.storyappexpert.domain.model.Story
 
 class StoryAdapter : RecyclerView.Adapter<StoryViewHolder>() {
 

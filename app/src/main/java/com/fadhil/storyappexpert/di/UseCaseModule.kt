@@ -1,13 +1,13 @@
 package com.fadhil.storyappexpert.di
 
-import com.fadhil.storyappexpert.data.source.AuthRepository
-import com.fadhil.storyappexpert.data.source.ConfigurationRepository
-import com.fadhil.storyappexpert.data.source.SettingRepository
-import com.fadhil.storyappexpert.domain.repository.IStoryRepository
-import com.fadhil.storyappexpert.domain.usecase.AuthUseCase
-import com.fadhil.storyappexpert.domain.usecase.ConfigurationUseCase
-import com.fadhil.storyappexpert.domain.usecase.SettingUseCase
-import com.fadhil.storyappexpert.domain.usecase.StoryUseCase
+import com.fadhil.storyappexpert.core.data.source.AuthRepository
+import com.fadhil.storyappexpert.core.data.source.ConfigurationRepository
+import com.fadhil.storyappexpert.core.data.source.SettingRepository
+import com.fadhil.storyappexpert.core.domain.repository.IStoryRepository
+import com.fadhil.storyappexpert.core.domain.usecase.AuthUseCase
+import com.fadhil.storyappexpert.core.domain.usecase.ConfigurationUseCase
+import com.fadhil.storyappexpert.core.domain.usecase.SettingUseCase
+import com.fadhil.storyappexpert.core.domain.usecase.StoryUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

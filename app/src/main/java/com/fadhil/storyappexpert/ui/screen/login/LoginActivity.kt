@@ -9,13 +9,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
-import com.fadhil.storyappexpert.data.ProcessResult
-import com.fadhil.storyappexpert.data.ProcessResultDelegate
-import com.fadhil.storyappexpert.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.data.source.remote.response.ResLogin
+import com.fadhil.storyappexpert.core.util.StringUtil.Empty
 import com.fadhil.storyappexpert.databinding.ActivityLoginBinding
 import com.fadhil.storyappexpert.ui.screen.home.HomeActivity
 import com.fadhil.storyappexpert.ui.screen.register.RegisterActivity
-import com.fadhil.storyappexpert.util.StringUtil.Empty
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint

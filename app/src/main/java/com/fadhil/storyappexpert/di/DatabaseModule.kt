@@ -2,11 +2,10 @@ package com.fadhil.storyappexpert.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
-import androidx.room.Room
-import com.fadhil.storyappexpert.data.source.local.db.AppDatabase
-import com.fadhil.storyappexpert.data.source.local.prefs.SettingPreferences
-import com.fadhil.storyappexpert.data.source.local.prefs.dataStore
+import androidx.preference.PreferenceManager
+import com.fadhil.storyappexpert.core.data.source.local.db.AppDatabase
+import com.fadhil.storyappexpert.core.data.source.local.prefs.SettingPreferences
+import com.fadhil.storyappexpert.core.data.source.local.prefs.dataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,14 +17,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    private const val DATABASE_NAME = "AppDB"
-
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext appContext: Context): AppDatabase =
-        Room.databaseBuilder(
-            appContext.applicationContext, AppDatabase::class.java, DATABASE_NAME
-        ).fallbackToDestructiveMigration().build()
+        AppDatabase.getDatabase(
+            appContext.applicationContext,
+            AppDatabase.DATABASE_NAME
+        )
 
     @Singleton
     @Provides

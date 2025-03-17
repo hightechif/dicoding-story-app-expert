@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.AsyncPagingDataDiffer
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.ListUpdateCallback
-import com.fadhil.storyappexpert.domain.model.Story
-import com.fadhil.storyappexpert.domain.usecase.IStoryUseCase
+import com.fadhil.storyappexpert.core.domain.model.Story
+import com.fadhil.storyappexpert.core.domain.usecase.IStoryUseCase
+import com.fadhil.storyappexpert.core.util.DataDummy
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
-import com.fadhil.storyappexpert.util.DataDummy
 import com.fadhil.storyappexpert.utils.MainDispatcherRule
 import com.fadhil.storyappexpert.utils.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi

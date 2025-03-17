@@ -1,12 +1,10 @@
 package com.fadhil.storyappexpert.di
 
 import android.content.SharedPreferences
-import com.fadhil.storyappexpert.data.source.local.prefs.HttpHeaderLocalSource
-import com.fadhil.storyappexpert.data.source.remote.network.AuthInterceptor
-import com.fadhil.storyappexpert.data.source.remote.network.StoryApi
-import com.fadhil.storyappexpert.data.source.remote.network.StoryApiService
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.fadhil.storyappexpert.BuildConfig
+import com.fadhil.storyappexpert.core.data.source.local.prefs.HttpHeaderLocalSource
+import com.fadhil.storyappexpert.core.data.source.remote.network.AuthInterceptor
+import com.fadhil.storyappexpert.core.data.source.remote.network.StoryApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,7 +38,7 @@ object NetworkModule {
     fun provideHttpClient(
         loggerInterceptor: HttpLoggingInterceptor,
         authInterceptor: AuthInterceptor
-    ): OkHttpClient = StoryApi.buildClient(loggerInterceptor, authInterceptor)
+    ): OkHttpClient = StoryApi.buildClient(loggerInterceptor, authInterceptor, BuildConfig.DEBUG)
 
     @Singleton
     @Provides

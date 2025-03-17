@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.fadhil.storyappexpert.domain.usecase.AuthUseCase
-import com.fadhil.storyappexpert.domain.usecase.SettingUseCase
+import com.fadhil.storyappexpert.core.domain.usecase.AuthUseCase
+import com.fadhil.storyappexpert.core.domain.usecase.SettingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

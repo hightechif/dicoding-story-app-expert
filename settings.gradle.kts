@@ -1,7 +1,7 @@
 import java.net.URI
 
 include(":core")
-
+include(":favorite")
 
 pluginManagement {
     repositories {

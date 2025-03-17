@@ -1,5 +1,6 @@
 package com.fadhil.storyappexpert.ui.screen.maps
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -11,10 +12,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.fadhil.storyappexpert.R
-import com.fadhil.storyappexpert.data.ProcessResult
-import com.fadhil.storyappexpert.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.data.ProcessResult
+import com.fadhil.storyappexpert.core.data.ProcessResultDelegate
+import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.databinding.ActivityStoryMapsBinding
-import com.fadhil.storyappexpert.domain.model.Story
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -31,9 +32,7 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val viewModel: StoryMapsViewModel by viewModels()
 
     private val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
                 getMyLocation()
             }
@@ -43,7 +42,9 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityStoryMapsBinding.inflate(layoutInflater)
+        binding = ActivityStoryMapsBinding.inflate(
+            layoutInflater
+        )
         setContentView(binding.root)
 
         setupView()
@@ -54,7 +55,8 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setupView() {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment =
+            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -106,7 +108,12 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .snippet(snippet)
         )
         if (zoom != null) {
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
+            mMap.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    latLng,
+                    zoom
+                )
+            )
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         }
@@ -115,12 +122,12 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getMyLocation() {
         if (ContextCompat.checkSelfPermission(
                 this.applicationContext,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             mMap.isMyLocationEnabled = true
         } else {
-            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
 
@@ -145,10 +152,11 @@ class StoryMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             data.forEach { story ->
                                 if (story.lat != null && story.lon != null)
                                     drawMarker(
-                                        story.lat,
-                                        story.lon,
+                                        story.lat!!,
+                                        story.lon!!,
                                         story.name,
-                                        story.description
+                                        story.description,
+                                        4F
                                     )
                             }
                         }

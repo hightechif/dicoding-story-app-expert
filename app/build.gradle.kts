@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +8,7 @@ plugins {
     id("androidx.navigation.safeargs")
     id("com.google.dagger.hilt.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.gaelmarhic.quadrant")
 }
 
 android {
@@ -20,6 +23,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Load credentials.
+        val p = Properties()
+        p.load(project.rootProject.file("local.properties").reader())
+
+        // Share the key with your `AndroidManifest.xml`
+        manifestPlaceholders.put("googleMapsApiKey", p.getProperty("GOOGLE_MAPS_API_KEY") ?: "null")
     }
 
     buildTypes {
@@ -43,6 +53,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
@@ -55,16 +66,9 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.livedata)
     implementation(libs.viewmodel)
-
-    /** material design */
-    implementation(libs.legacy)
-    implementation(libs.recyclerview)
-    implementation(libs.material)
-
-    /** navigation */
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
-    implementation(libs.gmaps)
+    implementation(libs.preference)
+    implementation(libs.feature.delivery)
+    implementation(libs.feature.delivery.ktx)
 
     /** testing */
     testImplementation(libs.junit)
@@ -76,6 +80,16 @@ dependencies {
     //special testing
     testImplementation(libs.androidx.core.testing) // InstantTaskExecutorRule
     testImplementation(libs.kotlinx.coroutines.test) //TestCoroutineDispatcher
+
+    /** material design */
+    implementation(libs.legacy)
+    implementation(libs.recyclerview)
+    implementation(libs.material)
+
+    /** navigation */
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.gmaps)
 
     /** coroutines */
     implementation(libs.kotlinx.coroutines.android)
@@ -97,12 +111,6 @@ dependencies {
     /** dependency injection */
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
-
-    /** data object mapper */
-    api(libs.pozo.mapstruct.kotlin)
-    kapt(libs.pozo.mapstruct.processor)
-    implementation(libs.mapstruct)
-    kapt(libs.mapstruct.processor)
 
     /** supporting lib */
     implementation(libs.timber)
