@@ -153,6 +153,7 @@ class StoryRemoteMediator @Inject constructor(
                                 Result.Unauthorized(badResponse.message)
                             }
                         } catch (e: Exception) {
+                            e.printStackTrace()
                             Result.Unauthorized(json)
                         }
                     } else {
