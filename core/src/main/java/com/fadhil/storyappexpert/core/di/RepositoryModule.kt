@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.di
+package com.fadhil.storyappexpert.core.di
 
 import android.content.SharedPreferences
 import com.fadhil.storyappexpert.core.data.source.AuthRepository

@@ -1,39 +1,31 @@
-package com.fadhil.storyappexpert.ui.screen.home.list
+package com.fadhil.storyappexpert.favorite.ui.list
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fadhil.storyappexpert.core.domain.model.Story
-import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
-import com.fadhil.storyappexpert.core.util.DynamicModuleDownloadUtil
-import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
+import com.fadhil.storyappexpert.favorite.databinding.FragmentFavoriteStoryListBinding
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
+import com.fadhil.storyappexpert.ui.screen.home.list.StoryListFragmentDirections
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
 import com.google.android.material.snackbar.Snackbar
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
-class StoryListFragment : Fragment(), ModuleNavigator,
-    DynamicModuleDownloadUtil.DynamicDownloadListener {
+class FavoriteStoryListFragment : Fragment() {
 
-    private lateinit var binding: FragmentStoryListBinding
-    private val viewModel: StoryListViewModel by viewModels()
+    private lateinit var binding: FragmentFavoriteStoryListBinding
+
+    //private val viewModel: FavoriteStoryListViewModel by viewModels()
     private val mStoryPagingAdapter = PagingStoryAdapter(StoryComparator)
-    private lateinit var dynamicModuleDownloadUtil: DynamicModuleDownloadUtil
 
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -50,7 +42,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentStoryListBinding.inflate(inflater, container, false)
+        binding = FragmentFavoriteStoryListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -87,11 +79,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
             }
 
             override fun setOnFavoriteListener(story: Story, position: Int) {
-                lifecycleScope.launch {
-                    viewModel.addToFavorites(story).collect {
-                        if (it) mStoryPagingAdapter.notifyItemChanged(position)
-                    }
-                }
+                // remove
             }
         }
         mStoryPagingAdapter.delegate = callback
@@ -109,11 +97,11 @@ class StoryListFragment : Fragment(), ModuleNavigator,
         }
 
         binding.fabMap.setOnClickListener {
-            navigateToStoryMapsActivity()
+            //navigateToStoryMapsActivity()
         }
 
         binding.fabFavorite.setOnClickListener {
-            initDynamicModule()
+            //initDynamicModule()
         }
     }
 
@@ -122,8 +110,8 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun initData() {
-        viewModel.setSize(10)
-        viewModel.setLocation(1)
+        //viewModel.setSize(10)
+        //viewModel.setLocation(1)
         getPagingStory()
     }
 
@@ -134,40 +122,10 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     private fun getPagingStory() {
         // Activities can use lifecycleScope directly; fragments use
         // viewLifecycleOwner.lifecycleScope.
-        viewModel.stories.observe(viewLifecycleOwner) { pagingData ->
-            mStoryPagingAdapter.submitData(lifecycle, pagingData)
-        }
+//        viewModel.stories.observe(viewLifecycleOwner) { pagingData ->
+//            mStoryPagingAdapter.submitData(lifecycle, pagingData)
+//        }
     }
 
-    private fun initDynamicModule() {
-        initDynamicModuleDownloadUtil()
-        openDynamicActivityIfDownloaded()
-    }
-
-    private fun initDynamicModuleDownloadUtil() {
-        dynamicModuleDownloadUtil = DynamicModuleDownloadUtil(requireContext(), this)
-    }
-
-    private fun openDynamicActivityIfDownloaded() {
-        if (dynamicModuleDownloadUtil.isModuleDownloaded("favorite")) {
-            openDynamicActivity()
-        } else {
-            dynamicModuleDownloadUtil.downloadDynamicModule("favorite")
-        }
-    }
-
-    override fun onDynamicModuleDownloaded() {
-        openDynamicActivity()
-    }
-
-    private fun openDynamicActivity() {
-//        val intent = Intent()
-//        intent.setClassName(
-//            "com.fadhil.storyappexpert.favorite",".ui.FavoriteStoryActivity"
-//        )
-//        startActivity(intent)
-//        navigateToFavoriteStoryActivity()
-        startActivity(Intent(requireContext(), Class.forName("com.fadhil.storyappexpert.favorite.ui.FavoriteStoryActivity")))
-    }
 
 }

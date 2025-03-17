@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.di
+package com.fadhil.storyappexpert.core.di
 
 import com.fadhil.storyappexpert.core.data.source.remote.network.StoryApi
 import com.fadhil.storyappexpert.core.data.source.remote.network.StoryApiService

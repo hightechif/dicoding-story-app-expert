@@ -14,7 +14,7 @@
 
     <application>
         <activity
-            android:name="com.fadhil.storyappexpert.favorite.ui.FavoritStoryActivity"
+            android:name="com.fadhil.storyappexpert.favorite.ui.FavoriteStoryActivity"
             android:exported="false" />
     </application>
 

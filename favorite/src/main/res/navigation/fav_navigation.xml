@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fav_navigation.xml"
+    app:startDestination="@id/favoriteStoryListFragment">
+
+    <fragment
+        android:id="@+id/favoriteStoryListFragment"
+        android:name="com.fadhil.storyappexpert.favorite.ui.list.FavoriteStoryListFragment"
+        android:label="FavoriteStoryListFragment"
+        tools:layout="@layout/fragment_favorite_story_list"/>
+</navigation>

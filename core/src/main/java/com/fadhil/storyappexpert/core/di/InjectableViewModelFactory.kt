@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.di
+package com.fadhil.storyappexpert.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

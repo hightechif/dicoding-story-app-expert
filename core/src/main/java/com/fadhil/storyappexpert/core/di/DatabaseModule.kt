@@ -1,8 +1,7 @@
-package com.fadhil.storyappexpert.di
+package com.fadhil.storyappexpert.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import com.fadhil.storyappexpert.core.data.source.local.db.AppDatabase
 import com.fadhil.storyappexpert.core.data.source.local.prefs.SettingPreferences
 import com.fadhil.storyappexpert.core.data.source.local.prefs.dataStore
@@ -28,7 +27,7 @@ object DatabaseModule {
     @Singleton
     @Provides
     fun provideSharedPreferences(@ApplicationContext appContext: Context): SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(appContext)
+        androidx.preference.PreferenceManager.getDefaultSharedPreferences(appContext)
 
     @Singleton
     @Provides
