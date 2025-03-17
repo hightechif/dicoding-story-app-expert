@@ -53,7 +53,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    // dynamicFeatures += setOf(":favorite")
+    dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.livedata)
     implementation(libs.viewmodel)
     implementation(libs.preference)
+    implementation(libs.feature.delivery)
+    implementation(libs.feature.delivery.ktx)
 
     /** testing */
     testImplementation(libs.junit)

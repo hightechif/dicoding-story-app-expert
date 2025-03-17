@@ -46,6 +46,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.feature.delivery.ktx)
 
     /** local data persistence */
     implementation(libs.room.runtime)
@@ -69,4 +70,7 @@ dependencies {
     /** dependency injection */
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
+
+    /** supporting lib */
+    implementation(libs.timber)
 }

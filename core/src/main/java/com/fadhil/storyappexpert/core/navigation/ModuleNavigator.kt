@@ -9,15 +9,23 @@ import androidx.fragment.app.FragmentActivity
 
 interface ModuleNavigator {
     fun <T> T.navigateToStoryMapsActivity(resultLauncher: ActivityResultLauncher<Intent>? = null) where T : AppCompatActivity, T : ModuleNavigator {
-        startStoryMapsActivity(ActivityClassPath.StoryMaps, resultLauncher)
+        startNewActivity(ActivityClassPath.StoryMaps, resultLauncher)
     }
 
     fun <T> T.navigateToStoryMapsActivity(resultLauncher: ActivityResultLauncher<Intent>? = null) where T : Fragment, T : ModuleNavigator {
-        startStoryMapsActivity(ActivityClassPath.StoryMaps, resultLauncher)
+        startNewActivity(ActivityClassPath.StoryMaps, resultLauncher)
+    }
+
+    fun <T> T.navigateToFavoriteStoryActivity(resultLauncher: ActivityResultLauncher<Intent>? = null) where T : AppCompatActivity, T : ModuleNavigator {
+        startNewActivity(ActivityClassPath.FavoriteStory, resultLauncher)
+    }
+
+    fun <T> T.navigateToFavoriteStoryActivity(resultLauncher: ActivityResultLauncher<Intent>? = null) where T : Fragment, T : ModuleNavigator {
+        startNewActivity(ActivityClassPath.FavoriteStory, resultLauncher)
     }
 }
 
-private fun FragmentActivity.startStoryMapsActivity(
+private fun FragmentActivity.startNewActivity(
     activityClassPath: ActivityClassPath,
     resultLauncher: ActivityResultLauncher<Intent>?
 ) {
@@ -29,7 +37,7 @@ private fun FragmentActivity.startStoryMapsActivity(
     }
 }
 
-private fun Fragment.startStoryMapsActivity(
+private fun Fragment.startNewActivity(
     activityClassPath: ActivityClassPath,
     resultLauncher: ActivityResultLauncher<Intent>?
 ) {

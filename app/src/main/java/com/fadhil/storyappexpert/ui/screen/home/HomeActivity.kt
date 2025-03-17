@@ -1,5 +1,6 @@
 package com.fadhil.storyappexpert.ui.screen.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -11,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import com.fadhil.storyappexpert.R
 import com.fadhil.storyappexpert.databinding.ActivityHomeBinding
 import com.fadhil.storyappexpert.ui.screen.login.LoginActivity
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,6 +45,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupListener() {
 
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        SplitCompat.install(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

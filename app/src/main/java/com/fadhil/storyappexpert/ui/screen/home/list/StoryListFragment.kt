@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
+import com.fadhil.storyappexpert.core.util.DynamicModuleDownloadUtil
 import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
@@ -24,14 +24,15 @@ import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
-class StoryListFragment : Fragment(), ModuleNavigator {
+class StoryListFragment : Fragment(), ModuleNavigator,
+    DynamicModuleDownloadUtil.DynamicDownloadListener {
 
     private lateinit var binding: FragmentStoryListBinding
     private val viewModel: StoryListViewModel by viewModels()
     private val mStoryPagingAdapter = PagingStoryAdapter(StoryComparator)
+    private lateinit var dynamicModuleDownloadUtil: DynamicModuleDownloadUtil
 
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -107,22 +108,11 @@ class StoryListFragment : Fragment(), ModuleNavigator {
         }
 
         binding.fabMap.setOnClickListener {
-            try {
-                navigateToStoryMapsActivity()
-            } catch (e: Exception){
-                e.printStackTrace()
-                Timber.e(e)
-                Toast.makeText(requireContext(), "Module not found", Toast.LENGTH_SHORT).show()
-            }
+            navigateToStoryMapsActivity()
         }
 
         binding.fabFavorite.setOnClickListener {
-            val snackBar = Snackbar.make(
-                binding.root, "Feature is under maintenance.",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.show()
-            // TODO: Create and open Favorite Activity
+            initDynamicModule()
         }
     }
 
@@ -146,6 +136,31 @@ class StoryListFragment : Fragment(), ModuleNavigator {
         viewModel.stories.observe(viewLifecycleOwner) { pagingData ->
             mStoryPagingAdapter.submitData(lifecycle, pagingData)
         }
+    }
+
+    private fun initDynamicModule() {
+        initDynamicModuleDownloadUtil()
+        openDynamicActivityIfDownloaded()
+    }
+
+    private fun initDynamicModuleDownloadUtil() {
+        dynamicModuleDownloadUtil = DynamicModuleDownloadUtil(requireContext(), this)
+    }
+
+    private fun openDynamicActivityIfDownloaded() {
+        if (dynamicModuleDownloadUtil.isModuleDownloaded("favorite")) {
+            openDynamicActivity()
+        } else {
+            dynamicModuleDownloadUtil.downloadDynamicModule("favorite")
+        }
+    }
+
+    override fun onDynamicModuleDownloaded() {
+        openDynamicActivity()
+    }
+
+    private fun openDynamicActivity() {
+        navigateToFavoriteStoryActivity()
     }
 
 }
