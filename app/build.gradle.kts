@@ -53,7 +53,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    dynamicFeatures += setOf(":maps")
+    // dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
