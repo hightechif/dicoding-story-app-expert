@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.fadhil.storyappexpert.core.domain.model.Favorite
+import com.fadhil.storyappexpert.core.domain.model.Favorites
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.favorite.databinding.FragmentFavoriteStoryListBinding
 import com.fadhil.storyappexpert.favorite.ui.list.adapter.StoryAdapter
@@ -19,7 +19,6 @@ import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class FavoriteStoryListFragment : Fragment() {
 
@@ -89,10 +88,9 @@ class FavoriteStoryListFragment : Fragment() {
             val args = FavoriteStoryListFragmentArgs.fromBundle(requireActivity().intent.extras!!)
             val json = args.jsonData
 
-            Timber.d("DEBUG FADHIL --- json = $json")
-            val favorite = Gson().fromJson<Favorite>(json, object : TypeToken<Favorite>() {}.type)
-            Timber.d("DEBUG FADHIL --- data = $favorite")
-            adapter.setData(favorite.list)
+            val favorites =
+                Gson().fromJson<Favorites>(json, object : TypeToken<Favorites>() {}.type)
+            adapter.setData(favorites.list)
         }
     }
 

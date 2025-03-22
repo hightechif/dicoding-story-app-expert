@@ -43,6 +43,12 @@ object DateTimeUtil {
         return zdt.format(dtf)
     }
 
+    fun getDisplayDate(dateTime: LocalDateTime, pattern: String = edtsFormat): String {
+        val formatter = DateTimeFormatter.ofPattern(pattern)
+        val formattedDateTime = dateTime.format(formatter)
+        return formattedDateTime
+    }
+
     fun getUTCLocalDate(time: Long, pattern: String = edtsFormat): String {
         val instant = Instant.ofEpochMilli(time)
         val dateTime = LocalDateTime.ofInstant(instant, zoneIdUTC)

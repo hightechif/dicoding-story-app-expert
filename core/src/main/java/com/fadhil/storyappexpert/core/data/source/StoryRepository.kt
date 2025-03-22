@@ -4,11 +4,15 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import androidx.paging.map
 import com.fadhil.storyappexpert.core.data.NetworkBoundProcessResource
 import com.fadhil.storyappexpert.core.data.Result
+import com.fadhil.storyappexpert.core.data.source.local.StoryLocalDataSource
+import com.fadhil.storyappexpert.core.data.source.remote.StoryRemoteDataSource
 import com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse
 import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
 import com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse
@@ -33,8 +37,8 @@ import java.io.FileOutputStream
 import java.io.InputStream
 
 class StoryRepository @javax.inject.Inject constructor(
-    private val remoteDataSource: com.fadhil.storyappexpert.core.data.source.remote.StoryRemoteDataSource,
-    private val localDataSource: com.fadhil.storyappexpert.core.data.source.local.StoryLocalDataSource,
+    private val remoteDataSource: StoryRemoteDataSource,
+    private val localDataSource: StoryLocalDataSource,
     private val storyRemoteMediator: StoryRemoteMediator,
     private val storyPagingSource: StoryPagingSource
 ) : IStoryRepository {
@@ -111,15 +115,14 @@ class StoryRepository @javax.inject.Inject constructor(
         location: Int?,
         reload: Boolean
     ): Flow<Result<List<Story>>> =
-        object :
-            NetworkBoundProcessResource<List<Story>, ApiContentResponse<ResStory>?>() {
+        object : NetworkBoundProcessResource<List<Story>, ApiContentResponse<ResStory>?>() {
 
             override suspend fun createCall(): Flow<Result<ApiContentResponse<ResStory>?>> {
                 return remoteDataSource.getAllStories(page, size, location)
             }
 
             override suspend fun callBackResult(data: ApiContentResponse<ResStory>?): List<Story> {
-                return mapper.mapStoryResponseToDomainList(data?.listStory ?: emptyList())
+                return data?.listStory?.map { mapper.mapStoryResponseToDomain(it) } ?: emptyList()
             }
 
         }.asFlow()
@@ -127,7 +130,6 @@ class StoryRepository @javax.inject.Inject constructor(
     override fun getFavoriteStories(): Flow<List<Story>> = flow {
         localDataSource.getFavorites().collect { favorites ->
             val mappedStories = favorites.map { mapper.mapStoryEntityToDomain(it) }
-            Timber.d("DEBUG FADHIL --- favorites = $mappedStories")
             emit(mappedStories)
         }
     }
@@ -143,8 +145,8 @@ class StoryRepository @javax.inject.Inject constructor(
             // storyPagingSource
             localDataSource.getPagingStories()
         }
-        val pager = androidx.paging.Pager(
-            config = androidx.paging.PagingConfig(
+        val pager = Pager(
+            config = PagingConfig(
                 pageSize = 10,
             ),
             remoteMediator = storyRemoteMediator,
@@ -175,7 +177,6 @@ class StoryRepository @javax.inject.Inject constructor(
     override suspend fun addToFavorites(story: Story) =
         withContext(Dispatchers.IO + NonCancellable) {
             val entity = mapper.mapStoryDomainToEntity(story)
-            Timber.d("DEBUG FADHIL ---- entity = $entity")
             localDataSource.updateData(entity)
         }
 
@@ -196,8 +197,8 @@ class StoryRepository @javax.inject.Inject constructor(
         @Volatile
         private var instance: IStoryRepository? = null
         fun getInstance(
-            remoteDataSource: com.fadhil.storyappexpert.core.data.source.remote.StoryRemoteDataSource,
-            localDataSource: com.fadhil.storyappexpert.core.data.source.local.StoryLocalDataSource,
+            remoteDataSource: StoryRemoteDataSource,
+            localDataSource: StoryLocalDataSource,
             storyRemoteMediator: StoryRemoteMediator,
             storyPagingSource: StoryPagingSource
         ): IStoryRepository =

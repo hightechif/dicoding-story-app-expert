@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.fadhil.storyappexpert.core.domain.model.Story
+import com.fadhil.storyappexpert.core.domain.model.Favorite
 import com.fadhil.storyappexpert.databinding.ItemRowStoryBinding
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
 
@@ -14,13 +14,13 @@ class StoryAdapter : RecyclerView.Adapter<StoryViewHolder>() {
     var delegate: PagingStoryDelegate? = null
     private lateinit var binding: ItemRowStoryBinding
 
-    private val diffUtil = object : DiffUtil.ItemCallback<Story>() {
-        override fun areItemsTheSame(oldItem: Story, newItem: Story):
+    private val diffUtil = object : DiffUtil.ItemCallback<Favorite>() {
+        override fun areItemsTheSame(oldItem: Favorite, newItem: Favorite):
                 Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Story, newItem: Story):
+        override fun areContentsTheSame(oldItem: Favorite, newItem: Favorite):
                 Boolean {
             return oldItem == newItem
         }
@@ -40,7 +40,7 @@ class StoryAdapter : RecyclerView.Adapter<StoryViewHolder>() {
 
     override fun getItemCount() = asyncListDiffer.currentList.size
 
-    fun setData(newList: List<Story>) {
+    fun setData(newList: List<Favorite>) {
         asyncListDiffer.submitList(newList)
     }
 

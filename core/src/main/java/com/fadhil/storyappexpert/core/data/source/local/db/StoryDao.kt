@@ -40,7 +40,9 @@ interface StoryDao {
         "SELECT s.id, s.name, s.description, s.photoUrl, " +
                 "s.created_time, s.lat, s.lon, s.favorite " +
                 "FROM stories s " +
-                "WHERE favorite == 1 "
+                "WHERE favorite == 1 " +
+                "ORDER BY created_time " +
+                "DESC"
     )
     fun getFavorites(): Flow<List<StoryEntity>>
 

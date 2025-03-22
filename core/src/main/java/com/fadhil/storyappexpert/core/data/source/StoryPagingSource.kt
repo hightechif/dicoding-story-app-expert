@@ -9,6 +9,7 @@ import com.fadhil.storyappexpert.core.domain.model.Story
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.mapstruct.factory.Mappers
+import timber.log.Timber
 import javax.inject.Inject
 
 class StoryPagingSource @Inject constructor(
@@ -36,7 +37,9 @@ class StoryPagingSource @Inject constructor(
                     }
                 }
             }
-            val list = resStory?.let { mapper.mapStoryResponseToDomainList(it) }
+            val list = resStory?.let { it1 -> it1.map { it2 ->
+                mapper.mapStoryResponseToDomain(it2)
+            } }
             LoadResult.Page(
                 data = list ?: emptyList(),
                 prevKey = if (position == INITIAL_PAGE_INDEX) null else position - 1,

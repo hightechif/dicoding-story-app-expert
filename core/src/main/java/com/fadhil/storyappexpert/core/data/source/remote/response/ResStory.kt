@@ -1,6 +1,7 @@
 package com.fadhil.storyappexpert.core.data.source.remote.response
 
 import com.fadhil.storyappexpert.core.util.DateTimeUtil
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
 
@@ -25,4 +26,5 @@ data class ResStory(
     fun getCreatedTime(): Long =
         getCreatedDate().toInstant(DateTimeUtil.zoneOffsetUTC).toEpochMilli()
 
+    override fun toString() = Gson().toJson(this)
 }

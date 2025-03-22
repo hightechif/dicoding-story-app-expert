@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.fadhil.storyappexpert.core.domain.model.Favorite
+import com.fadhil.storyappexpert.core.domain.model.Favorites
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
 import com.fadhil.storyappexpert.core.util.DynamicModuleDownloadUtil
@@ -27,7 +26,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class StoryListFragment : Fragment(), ModuleNavigator,
@@ -167,8 +165,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     private fun openDynamicActivity() {
         viewModel.getFavoriteStories().observe(viewLifecycleOwner) { list ->
             if (viewModel.isFabFavoriteClicked.value == true) {
-                Timber.d("DEBUG FADHIL ---- list on Fragment = $list")
-                val json = Gson().toJson(Favorite(list))
+                val json = Gson().toJson(Favorites.build(list))
                 navigateToFavoriteStoryActivity(jsonData = json)
                 viewModel.isFabFavoriteClicked.postValue(false)
             }
