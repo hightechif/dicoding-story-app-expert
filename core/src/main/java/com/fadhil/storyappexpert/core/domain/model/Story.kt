@@ -1,6 +1,7 @@
 package com.fadhil.storyappexpert.core.domain.model
 
 import com.fadhil.storyappexpert.core.util.DateTimeUtil
+import com.google.gson.Gson
 import java.time.LocalDateTime
 
 data class Story(
@@ -11,7 +12,7 @@ data class Story(
     val createdDate: LocalDateTime,
     val lat: Double?,
     val lon: Double?,
-    var favorite: Boolean = false
+    var favorite: Boolean = false,
 ) {
 
     fun getCreatedDateDisplay(): String = DateTimeUtil.getUTCLocalDate(
@@ -20,5 +21,7 @@ data class Story(
     )
 
     fun getCreatedTime() = createdDate.toInstant(DateTimeUtil.zoneOffsetUTC).toEpochMilli()
+
+    override fun toString() = Gson().toJson(this)
 
 }

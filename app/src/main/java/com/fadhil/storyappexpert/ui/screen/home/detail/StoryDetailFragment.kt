@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class StoryDetailFragment : Fragment() {
+
     private lateinit var binding: FragmentStoryDetailBinding
     private val viewModel: StoryDetailViewModel by viewModels()
 

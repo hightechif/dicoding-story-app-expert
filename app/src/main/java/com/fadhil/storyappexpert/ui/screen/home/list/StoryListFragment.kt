@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fadhil.storyappexpert.core.domain.model.Favorites
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
 import com.fadhil.storyappexpert.core.util.DynamicModuleDownloadUtil
@@ -19,9 +20,10 @@ import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
-import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -76,7 +78,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun setupListener() {
-        val callback = object : StoryDelegate {
+        val callback = object : PagingStoryDelegate {
             override fun setOnClickListener(view: View, id: String) {
                 val toDetailUserFragment =
                     StoryListFragmentDirections.actionStoryListFragmentToStoryDetailFragment(
@@ -112,12 +114,13 @@ class StoryListFragment : Fragment(), ModuleNavigator,
         }
 
         binding.fabFavorite.setOnClickListener {
+            viewModel.isFabFavoriteClicked.postValue(true)
             initDynamicModule()
         }
     }
 
     private fun setupObserver() {
-
+        viewModel.getFavoriteStories().observeForever { }
     }
 
     private fun initData() {
@@ -160,7 +163,13 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun openDynamicActivity() {
-        navigateToFavoriteStoryActivity()
+        viewModel.getFavoriteStories().observe(viewLifecycleOwner) { list ->
+            if (viewModel.isFabFavoriteClicked.value == true) {
+                val json = Gson().toJson(Favorites.build(list))
+                navigateToFavoriteStoryActivity(jsonData = json)
+                viewModel.isFabFavoriteClicked.postValue(false)
+            }
+        }
     }
 
 }

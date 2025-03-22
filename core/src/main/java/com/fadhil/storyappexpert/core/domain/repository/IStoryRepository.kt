@@ -34,6 +34,8 @@ interface IStoryRepository {
         reload: Boolean
     ): Flow<Result<List<Story>>>
 
+    fun getFavoriteStories(): Flow<List<Story>>
+
     fun getPagingStory(
         size: Int?,
         location: Int?

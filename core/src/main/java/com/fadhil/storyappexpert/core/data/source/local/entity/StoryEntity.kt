@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.fadhil.storyappexpert.core.util.DateTimeUtil
+import com.google.gson.Gson
 import java.time.Instant
 import java.time.LocalDateTime
 
@@ -30,5 +31,7 @@ data class StoryEntity(
 
     fun getCreatedLocalDateTime(): LocalDateTime =
         Instant.ofEpochMilli(createdTime).atZone(DateTimeUtil.zoneIdUTC).toLocalDateTime()
+
+    override fun toString() = Gson().toJson(this)
 
 }

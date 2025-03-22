@@ -8,7 +8,7 @@ import com.fadhil.storyappexpert.databinding.ItemRowStoryBinding
 class PagingStoryViewHolder(private val binding: ItemRowStoryBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(story: Story?, position: Int, delegate: StoryDelegate?) {
+    fun bind(story: Story?, position: Int, delegate: PagingStoryDelegate?) {
         story?.let {
             binding.tvTitle.text = story.name
             binding.tvDate.text = story.getCreatedDateDisplay()

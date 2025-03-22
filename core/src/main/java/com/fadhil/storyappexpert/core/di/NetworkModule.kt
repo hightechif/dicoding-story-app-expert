@@ -1,7 +1,7 @@
-package com.fadhil.storyappexpert.di
+package com.fadhil.storyappexpert.core.di
 
 import android.content.SharedPreferences
-import com.fadhil.storyappexpert.BuildConfig
+import com.fadhil.storyappexpert.core.BuildConfig
 import com.fadhil.storyappexpert.core.data.source.local.prefs.HttpHeaderLocalSource
 import com.fadhil.storyappexpert.core.data.source.remote.network.AuthInterceptor
 import com.fadhil.storyappexpert.core.data.source.remote.network.StoryApi
