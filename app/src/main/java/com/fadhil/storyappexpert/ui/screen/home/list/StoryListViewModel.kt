@@ -20,6 +20,8 @@ class StoryListViewModel @Inject constructor(
     val size = MutableLiveData<Int>()
     val location = MutableLiveData<Int>()
 
+    val isFabFavoriteClicked = MutableLiveData(false)
+
     fun setSize(input: Int) {
         size.value = input
     }
@@ -35,7 +37,7 @@ class StoryListViewModel @Inject constructor(
         storyUseCase.getPagingStory(10, 1).cachedIn(viewModelScope)
 
     suspend fun addToFavorites(story: Story) = storyUseCase.addToFavorites(story)
-    fun getFavoriteStories() = storyUseCase.getFavoriteStories()
+    fun getFavoriteStories() = storyUseCase.getFavoriteStories().asLiveData()
     fun exampleData() = emptyList<Story>()
 
 }

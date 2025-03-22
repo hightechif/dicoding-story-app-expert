@@ -31,4 +31,6 @@ data class StoryEntity(
     fun getCreatedLocalDateTime(): LocalDateTime =
         Instant.ofEpochMilli(createdTime).atZone(DateTimeUtil.zoneIdUTC).toLocalDateTime()
 
+    override fun toString() = "$id::$name::$favorite::$createdTime"
+
 }

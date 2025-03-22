@@ -22,10 +22,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.mapstruct.factory.Mappers
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -125,6 +127,7 @@ class StoryRepository @javax.inject.Inject constructor(
     override fun getFavoriteStories(): Flow<List<Story>> = flow {
         localDataSource.getFavorites().collect { favorites ->
             val mappedStories = favorites.map { mapper.mapStoryEntityToDomain(it) }
+            Timber.d("DEBUG FADHIL --- favorites = $mappedStories")
             emit(mappedStories)
         }
     }
@@ -170,8 +173,9 @@ class StoryRepository @javax.inject.Inject constructor(
         }.asFlow()
 
     override suspend fun addToFavorites(story: Story) =
-        kotlinx.coroutines.withContext(Dispatchers.IO + NonCancellable) {
+        withContext(Dispatchers.IO + NonCancellable) {
             val entity = mapper.mapStoryDomainToEntity(story)
+            Timber.d("DEBUG FADHIL ---- entity = $entity")
             localDataSource.updateData(entity)
         }
 

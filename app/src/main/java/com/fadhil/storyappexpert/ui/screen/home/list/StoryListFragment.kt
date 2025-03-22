@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,13 +21,13 @@ import com.fadhil.storyappexpert.databinding.FragmentStoryListBinding
 import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
-import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class StoryListFragment : Fragment(), ModuleNavigator,
@@ -115,12 +116,13 @@ class StoryListFragment : Fragment(), ModuleNavigator,
         }
 
         binding.fabFavorite.setOnClickListener {
+            viewModel.isFabFavoriteClicked.postValue(true)
             initDynamicModule()
         }
     }
 
     private fun setupObserver() {
-
+        viewModel.getFavoriteStories().observeForever { }
     }
 
     private fun initData() {
@@ -163,10 +165,12 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun openDynamicActivity() {
-        lifecycleScope.launch {
-            viewModel.getFavoriteStories().collectLatest { list ->
+        viewModel.getFavoriteStories().observe(viewLifecycleOwner) { list ->
+            if (viewModel.isFabFavoriteClicked.value == true) {
+                Timber.d("DEBUG FADHIL ---- list on Fragment = $list")
                 val json = Gson().toJson(Favorite(list))
                 navigateToFavoriteStoryActivity(jsonData = json)
+                viewModel.isFabFavoriteClicked.postValue(false)
             }
         }
     }
