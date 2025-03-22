@@ -9,5 +9,10 @@
         android:id="@+id/favoriteStoryListFragment"
         android:name="com.fadhil.storyappexpert.favorite.ui.list.FavoriteStoryListFragment"
         android:label="FavoriteStoryListFragment"
-        tools:layout="@layout/fragment_favorite_story_list"/>
+        tools:layout="@layout/fragment_favorite_story_list">
+        <argument
+            android:name="jsonData"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

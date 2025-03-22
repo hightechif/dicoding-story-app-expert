@@ -1,13 +1,14 @@
 package com.fadhil.storyappexpert.favorite.ui
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.fadhil.storyappexpert.favorite.databinding.ActivityFavoritStoryBinding
 
 class FavoriteStoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoritStoryBinding
-    //private val viewModel: FavoriteStoryViewModel by viewModels()
+    private val viewModel: FavoriteStoryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +18,7 @@ class FavoriteStoryActivity : AppCompatActivity() {
         setupView()
         setupObserver()
         setupListener()
+        initData()
     }
 
     private fun setupView() {
@@ -28,6 +30,10 @@ class FavoriteStoryActivity : AppCompatActivity() {
     }
 
     private fun setupListener() {
+
+    }
+
+    private fun initData() {
 
     }
 }

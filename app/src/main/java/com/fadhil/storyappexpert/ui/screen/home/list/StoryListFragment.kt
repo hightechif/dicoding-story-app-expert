@@ -1,7 +1,6 @@
 package com.fadhil.storyappexpert.ui.screen.home.list
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fadhil.storyappexpert.core.domain.model.Favorite
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.navigation.ModuleNavigator
 import com.fadhil.storyappexpert.core.util.DynamicModuleDownloadUtil
@@ -21,9 +21,11 @@ import com.fadhil.storyappexpert.ui.screen.add.AddStoryActivity
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.LoadingStateAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryAdapter
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryComparator
-import com.fadhil.storyappexpert.ui.screen.home.list.adapter.StoryDelegate
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -77,7 +79,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun setupListener() {
-        val callback = object : StoryDelegate {
+        val callback = object : PagingStoryDelegate {
             override fun setOnClickListener(view: View, id: String) {
                 val toDetailUserFragment =
                     StoryListFragmentDirections.actionStoryListFragmentToStoryDetailFragment(
@@ -161,13 +163,12 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun openDynamicActivity() {
-//        val intent = Intent()
-//        intent.setClassName(
-//            "com.fadhil.storyappexpert.favorite",".ui.FavoriteStoryActivity"
-//        )
-//        startActivity(intent)
-//        navigateToFavoriteStoryActivity()
-        startActivity(Intent(requireContext(), Class.forName("com.fadhil.storyappexpert.favorite.ui.FavoriteStoryActivity")))
+        lifecycleScope.launch {
+            viewModel.getFavoriteStories().collectLatest { list ->
+                val json = Gson().toJson(Favorite(list))
+                navigateToFavoriteStoryActivity(jsonData = json)
+            }
+        }
     }
 
 }

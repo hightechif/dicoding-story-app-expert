@@ -29,9 +29,6 @@ interface StoryMapper {
     )
     fun mapStoryEntityToDomain(input: StoryEntity): Story
 
-    @Mappings
-    fun mapStoryEntityToDomainList(input: List<StoryEntity>): List<Story>
-
     @Mappings(
         value = [Mapping(
             target = "createdTime",

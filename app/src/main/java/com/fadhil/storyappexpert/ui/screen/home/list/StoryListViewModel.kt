@@ -3,6 +3,7 @@ package com.fadhil.storyappexpert.ui.screen.home.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -34,5 +35,7 @@ class StoryListViewModel @Inject constructor(
         storyUseCase.getPagingStory(10, 1).cachedIn(viewModelScope)
 
     suspend fun addToFavorites(story: Story) = storyUseCase.addToFavorites(story)
+    fun getFavoriteStories() = storyUseCase.getFavoriteStories()
+    fun exampleData() = emptyList<Story>()
 
 }

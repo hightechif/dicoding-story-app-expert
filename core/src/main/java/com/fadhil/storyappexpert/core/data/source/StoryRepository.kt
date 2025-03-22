@@ -21,6 +21,7 @@ import com.fadhil.storyappexpert.core.util.reduceFileImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -120,6 +121,13 @@ class StoryRepository @javax.inject.Inject constructor(
             }
 
         }.asFlow()
+
+    override fun getFavoriteStories(): Flow<List<Story>> = flow {
+        localDataSource.getFavorites().collect { favorites ->
+            val mappedStories = favorites.map { mapper.mapStoryEntityToDomain(it) }
+            emit(mappedStories)
+        }
+    }
 
     @OptIn(androidx.paging.ExperimentalPagingApi::class)
     override fun getPagingStory(

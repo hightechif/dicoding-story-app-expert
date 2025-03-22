@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.fadhil.storyappexpert.core.constant.ExtraKeys
 
 interface ModuleNavigator {
     fun <T> T.navigateToStoryMapsActivity(resultLauncher: ActivityResultLauncher<Intent>? = null) where T : AppCompatActivity, T : ModuleNavigator {
@@ -20,8 +21,11 @@ interface ModuleNavigator {
         startNewActivity(ActivityClassPath.FavoriteStory, resultLauncher)
     }
 
-    fun <T> T.navigateToFavoriteStoryActivity(resultLauncher: ActivityResultLauncher<Intent>? = null) where T : Fragment, T : ModuleNavigator {
-        startNewActivity(ActivityClassPath.FavoriteStory, resultLauncher)
+    fun <T> T.navigateToFavoriteStoryActivity(
+        resultLauncher: ActivityResultLauncher<Intent>? = null,
+        jsonData: String? = null
+    ) where T : Fragment, T : ModuleNavigator {
+        startNewActivity(ActivityClassPath.FavoriteStory, resultLauncher, jsonData)
     }
 }
 
@@ -39,9 +43,11 @@ private fun FragmentActivity.startNewActivity(
 
 private fun Fragment.startNewActivity(
     activityClassPath: ActivityClassPath,
-    resultLauncher: ActivityResultLauncher<Intent>?
+    resultLauncher: ActivityResultLauncher<Intent>?,
+    jsonData: String? = null
 ) {
     val intent = activityClassPath.getIntent(requireContext())
+    intent.putExtra(ExtraKeys.JSON_DATA, jsonData)
     if (resultLauncher != null) {
         resultLauncher.launch(intent)
     } else {

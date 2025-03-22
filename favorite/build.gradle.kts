@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 
+    /** networking */
+    implementation(libs.gson)
+
     /** supporting lib */
     implementation(libs.timber)
     implementation(libs.circleimageview)

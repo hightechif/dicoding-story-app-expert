@@ -11,7 +11,7 @@ class PagingStoryAdapter(diffCallback: DiffUtil.ItemCallback<Story>) :
     PagingDataAdapter<Story, PagingStoryViewHolder>(diffCallback) {
 
     private lateinit var binding: ItemRowStoryBinding
-    var delegate: StoryDelegate? = null
+    var delegate: PagingStoryDelegate? = null
 
     override fun onBindViewHolder(holder: PagingStoryViewHolder, position: Int) {
         val item = getItem(position)

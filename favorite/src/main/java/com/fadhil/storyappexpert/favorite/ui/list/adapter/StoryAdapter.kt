@@ -1,4 +1,4 @@
-package com.fadhil.storyappexpert.ui.screen.home.list.adapter
+package com.fadhil.storyappexpert.favorite.ui.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.databinding.ItemRowStoryBinding
+import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
 
 class StoryAdapter : RecyclerView.Adapter<StoryViewHolder>() {
 
-    var delegate: StoryDelegate? = null
+    var delegate: PagingStoryDelegate? = null
     private lateinit var binding: ItemRowStoryBinding
 
     private val diffUtil = object : DiffUtil.ItemCallback<Story>() {
