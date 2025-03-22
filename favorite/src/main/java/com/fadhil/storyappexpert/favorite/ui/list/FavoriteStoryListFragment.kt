@@ -6,19 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fadhil.storyappexpert.core.domain.model.Favorites
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.favorite.databinding.FragmentFavoriteStoryListBinding
 import com.fadhil.storyappexpert.favorite.ui.list.adapter.StoryAdapter
-import com.fadhil.storyappexpert.ui.screen.home.list.StoryListFragmentDirections
 import com.fadhil.storyappexpert.ui.screen.home.list.adapter.PagingStoryDelegate
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.launch
 
 class FavoriteStoryListFragment : Fragment() {
 
@@ -53,24 +50,21 @@ class FavoriteStoryListFragment : Fragment() {
     }
 
     private fun setupListener() {
+        binding.ivBack.setOnClickListener {
+            requireActivity().finish()
+        }
+
         val callback = object : PagingStoryDelegate {
             override fun setOnClickListener(view: View, id: String) {
-                val toDetailUserFragment =
-                    StoryListFragmentDirections.actionStoryListFragmentToStoryDetailFragment(
-                        id
-                    )
-                view.findNavController().navigate(toDetailUserFragment)
+                Snackbar.make(binding.root, "Feature is under development", Snackbar.LENGTH_LONG).show()
             }
 
             override fun setOnFavoriteListener(story: Story, position: Int) {
-                lifecycleScope.launch {
-                    // update favorite status
-                }
+                // do nothing
             }
         }
         adapter.delegate = callback
-        adapter.registerAdapterDataObserver(object :
-            RecyclerView.AdapterDataObserver() {
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 if (positionStart == 0) {
                     binding.rvUser.layoutManager?.scrollToPosition(0)
