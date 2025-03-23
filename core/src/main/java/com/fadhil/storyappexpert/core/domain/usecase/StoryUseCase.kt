@@ -19,7 +19,7 @@ class StoryUseCase @Inject constructor(
         reload: Boolean
     ) = storyRepository.getAllStories(page, size, location, reload)
 
-    override fun getFavoriteStories() = storyRepository.getFavorites()
+    override fun getFavorites() = storyRepository.getFavorites()
 
     override fun getPagingStory(
         size: Int?,
@@ -39,7 +39,7 @@ class StoryUseCase @Inject constructor(
 
     override suspend fun addToFavorites(story: Story) = flow {
         try {
-            story.favorite = !story.favorite
+            story.favorite = story.favorite != true
             storyRepository.addToFavorites(story)
             emit(true)
         } catch (e: Exception) {

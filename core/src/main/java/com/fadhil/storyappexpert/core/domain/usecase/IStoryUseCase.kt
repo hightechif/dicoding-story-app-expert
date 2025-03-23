@@ -19,7 +19,7 @@ interface IStoryUseCase {
         reload: Boolean
     ): Flow<Result<List<Story>>>
 
-    fun getFavoriteStories(): Flow<List<Favorite>>
+    fun getFavorites(): Flow<List<Favorite>>
 
     fun getPagingStory(
         size: Int?,

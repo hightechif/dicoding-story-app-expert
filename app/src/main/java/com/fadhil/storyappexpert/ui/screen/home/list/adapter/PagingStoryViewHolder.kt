@@ -13,7 +13,7 @@ class PagingStoryViewHolder(private val binding: ItemRowStoryBinding) :
             binding.tvTitle.text = story.name
             binding.tvDate.text = story.getCreatedDateDisplay()
             binding.tvDescription.text = story.description
-            binding.ivFavorite.isSelected = story.favorite
+            binding.ivFavorite.isSelected = story.favorite == true
             binding.ivFavorite.setOnClickListener {
                 delegate?.setOnFavoriteListener(story, position)
             }

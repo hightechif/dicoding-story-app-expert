@@ -121,7 +121,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun setupObserver() {
-        viewModel.getFavoriteStories().observeForever { }
+        viewModel.getFavorites().observeForever { }
     }
 
     private fun initData() {
@@ -166,7 +166,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     }
 
     private fun openDynamicActivity() {
-        viewModel.getFavoriteStories().observe(viewLifecycleOwner) { list ->
+        viewModel.getFavorites().observe(viewLifecycleOwner) { list ->
             if (viewModel.isFabFavoriteClicked.value == true) {
                 val json = Gson().toJson(Favorites(list))
                 navigateToFavoriteStoryActivity(jsonData = json)

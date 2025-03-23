@@ -16,7 +16,7 @@ data class Favorites(
                     displayedDate = story.getCreatedDateDisplay(),
                     lat = story.lat,
                     lon = story.lon,
-                    favorite = story.favorite,
+                    favorite = story.favorite == true,
                 )
             }
         )

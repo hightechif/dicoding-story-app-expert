@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.fadhil.storyappexpert.core.data.source.local.entity.FavoriteEntity
 import kotlinx.coroutines.flow.Flow
+import retrofit2.http.GET
 
 @Dao
 interface FavoritesDao {
@@ -15,13 +16,21 @@ interface FavoritesDao {
     suspend fun addFavorite(favorite: FavoriteEntity)
 
     @Query(
-        "SELECT f.id, f.story_id,  f.favorite " +
+        "SELECT f.id, f.story_id, f.created_time, f.favorite " +
                 "FROM favorites f " +
                 "WHERE favorite == 1 " +
                 "ORDER BY created_time " +
                 "DESC"
     )
     fun getFavorites(): Flow<List<FavoriteEntity>>
+
+    @Query(
+        "SELECT f.id, f.story_id, f.created_time, f.favorite " +
+                "FROM favorites f " +
+                "WHERE f.story_id LIKE :storyId " +
+                "LIMIT 1"
+    )
+    fun getFavorite(storyId: String): Flow<FavoriteEntity>
 
     @Update(FavoriteEntity::class, OnConflictStrategy.REPLACE)
     suspend fun update(favorite: FavoriteEntity)

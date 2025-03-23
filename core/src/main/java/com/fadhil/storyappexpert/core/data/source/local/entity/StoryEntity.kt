@@ -26,11 +26,16 @@ data class StoryEntity(
     @ColumnInfo(name = "lon")
     val lon: Double?,
     @ColumnInfo(name = "favorite")
-    val favorite: Boolean?
+    var favorite: Boolean?
 ) {
 
     fun getCreatedLocalDateTime(): LocalDateTime =
         Instant.ofEpochMilli(createdTime).atZone(DateTimeUtil.zoneIdUTC).toLocalDateTime()
+
+    fun getCreatedDateDisplay(): String = DateTimeUtil.getUTCLocalDate(
+        getCreatedLocalDateTime(),
+        "dd MMM yyyy, HH:mm:ss"
+    )
 
     override fun toString() = Gson().toJson(this)
 

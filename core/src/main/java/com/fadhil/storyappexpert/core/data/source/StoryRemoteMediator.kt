@@ -1,5 +1,6 @@
 package com.fadhil.storyappexpert.core.data.source
 
+import androidx.lifecycle.asLiveData
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -17,6 +18,7 @@ import com.fadhil.storyappexpert.core.domain.mapper.StoryMapper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.MalformedJsonException
+import kotlinx.coroutines.flow.collect
 import okio.BufferedSource
 import org.mapstruct.factory.Mappers
 import retrofit2.Response
@@ -81,8 +83,7 @@ class StoryRemoteMediator @Inject constructor(
                 }
                 database.remoteKeysDao().insertAll(keys)
                 val entities = data.map {
-                    val entity = mapper.mapStoryDomainToEntity(it)
-                    entity
+                    mapper.mapStoryDomainToEntity(it)
                 }
                 database.storyDao().insertStory(entities)
             }

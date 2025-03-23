@@ -144,7 +144,7 @@ class StoryRepository @javax.inject.Inject constructor(
                                 name = s.name,
                                 description = s.description,
                                 photoUrl = s.photoUrl,
-                                displayedDate = s.description,
+                                displayedDate = s.getCreatedDateDisplay(),
                                 lat = s.lat,
                                 lon = s.lon,
                                 favorite = f.favorite,
@@ -204,7 +204,7 @@ class StoryRepository @javax.inject.Inject constructor(
                     "fav-${story.id}",
                     story.id,
                     story.getCreatedTime(),
-                    story.favorite
+                    story.favorite == true
                 )
             )
         }

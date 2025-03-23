@@ -37,7 +37,7 @@ class StoryListViewModel @Inject constructor(
         storyUseCase.getPagingStory(10, 1).cachedIn(viewModelScope)
 
     suspend fun addToFavorites(story: Story) = storyUseCase.addToFavorites(story)
-    fun getFavoriteStories() = storyUseCase.getFavoriteStories().asLiveData()
+    fun getFavorites() = storyUseCase.getFavorites().asLiveData()
     fun exampleData() = emptyList<Story>()
 
 }
