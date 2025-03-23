@@ -11,13 +11,16 @@ import androidx.paging.liveData
 import androidx.paging.map
 import com.fadhil.storyappexpert.core.data.NetworkBoundProcessResource
 import com.fadhil.storyappexpert.core.data.Result
+import com.fadhil.storyappexpert.core.data.source.local.FavoritesLocalDataSource
 import com.fadhil.storyappexpert.core.data.source.local.StoryLocalDataSource
+import com.fadhil.storyappexpert.core.data.source.local.entity.FavoriteEntity
 import com.fadhil.storyappexpert.core.data.source.remote.StoryRemoteDataSource
 import com.fadhil.storyappexpert.core.data.source.remote.response.ApiContentResponse
 import com.fadhil.storyappexpert.core.data.source.remote.response.ApiResponse
 import com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse
 import com.fadhil.storyappexpert.core.data.source.remote.response.ResStory
 import com.fadhil.storyappexpert.core.domain.mapper.StoryMapper
+import com.fadhil.storyappexpert.core.domain.model.Favorite
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.domain.repository.IStoryRepository
 import com.fadhil.storyappexpert.core.util.FileUtil
@@ -31,16 +34,17 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.mapstruct.factory.Mappers
-import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
+import kotlin.String
 
 class StoryRepository @javax.inject.Inject constructor(
     private val remoteDataSource: StoryRemoteDataSource,
     private val localDataSource: StoryLocalDataSource,
     private val storyRemoteMediator: StoryRemoteMediator,
-    private val storyPagingSource: StoryPagingSource
+    private val storyPagingSource: StoryPagingSource,
+    private val favoritesLocalDataSource: FavoritesLocalDataSource,
 ) : IStoryRepository {
 
     private val mapper = Mappers.getMapper(StoryMapper::class.java)
@@ -127,10 +131,30 @@ class StoryRepository @javax.inject.Inject constructor(
 
         }.asFlow()
 
-    override fun getFavoriteStories(): Flow<List<Story>> = flow {
-        localDataSource.getFavorites().collect { favorites ->
-            val mappedStories = favorites.map { mapper.mapStoryEntityToDomain(it) }
-            emit(mappedStories)
+    override fun getFavorites(): Flow<List<Favorite>> = flow {
+        favoritesLocalDataSource.getFavorites().collect { favorites ->
+            localDataSource.getStories().collect { stories ->
+                val output = mutableListOf<Favorite>()
+                for (s in stories) {
+                    for (f in favorites) {
+                        if (s.id == f.storyId) {
+                            val favorite = Favorite(
+                                id = f.id,
+                                storyId = s.id,
+                                name = s.name,
+                                description = s.description,
+                                photoUrl = s.photoUrl,
+                                displayedDate = s.description,
+                                lat = s.lat,
+                                lon = s.lon,
+                                favorite = f.favorite,
+                            )
+                            output.add(favorite)
+                        }
+                    }
+                }
+                emit(output)
+            }
         }
     }
 
@@ -142,7 +166,6 @@ class StoryRepository @javax.inject.Inject constructor(
         storyPagingSource.location = location ?: 1
         storyRemoteMediator.location = location ?: 1
         val pagingSourceFactory = {
-            // storyPagingSource
             localDataSource.getPagingStories()
         }
         val pager = Pager(
@@ -176,8 +199,14 @@ class StoryRepository @javax.inject.Inject constructor(
 
     override suspend fun addToFavorites(story: Story) =
         withContext(Dispatchers.IO + NonCancellable) {
-            val entity = mapper.mapStoryDomainToEntity(story)
-            localDataSource.updateData(entity)
+            favoritesLocalDataSource.addFavorite(
+                FavoriteEntity(
+                    "fav-${story.id}",
+                    story.id,
+                    story.getCreatedTime(),
+                    story.favorite
+                )
+            )
         }
 
     private fun uriToFile(imageUri: Uri, context: Context): File {
@@ -200,14 +229,16 @@ class StoryRepository @javax.inject.Inject constructor(
             remoteDataSource: StoryRemoteDataSource,
             localDataSource: StoryLocalDataSource,
             storyRemoteMediator: StoryRemoteMediator,
-            storyPagingSource: StoryPagingSource
+            storyPagingSource: StoryPagingSource,
+            favoritesLocalDataSource: FavoritesLocalDataSource
         ): IStoryRepository =
             instance ?: synchronized(this) {
                 instance ?: StoryRepository(
                     remoteDataSource,
                     localDataSource,
                     storyRemoteMediator,
-                    storyPagingSource
+                    storyPagingSource,
+                    favoritesLocalDataSource
                 )
             }.also { instance = it }
     }

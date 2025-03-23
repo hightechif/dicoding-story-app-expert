@@ -12,7 +12,7 @@ data class Story(
     val createdDate: LocalDateTime,
     val lat: Double?,
     val lon: Double?,
-    var favorite: Boolean = false,
+    var favorite: Boolean,
 ) {
 
     fun getCreatedDateDisplay(): String = DateTimeUtil.getUTCLocalDate(

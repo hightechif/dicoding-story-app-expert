@@ -80,8 +80,11 @@ class StoryRemoteMediator @Inject constructor(
                     RemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
                 database.remoteKeysDao().insertAll(keys)
-                val entity = data.map { mapper.mapStoryDomainToEntity(it) }
-                database.storyDao().insertStory(entity)
+                val entities = data.map {
+                    val entity = mapper.mapStoryDomainToEntity(it)
+                    entity
+                }
+                database.storyDao().insertStory(entities)
             }
             return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (exception: Exception) {

@@ -8,6 +8,7 @@ import com.fadhil.storyappexpert.core.data.source.StoryPagingSource
 import com.fadhil.storyappexpert.core.data.source.StoryRemoteMediator
 import com.fadhil.storyappexpert.core.data.source.StoryRepository
 import com.fadhil.storyappexpert.core.data.source.local.ConfigurationLocalDataSource
+import com.fadhil.storyappexpert.core.data.source.local.FavoritesLocalDataSource
 import com.fadhil.storyappexpert.core.data.source.local.SettingLocalDataSource
 import com.fadhil.storyappexpert.core.data.source.local.StoryLocalDataSource
 import com.fadhil.storyappexpert.core.data.source.local.db.AppDatabase
@@ -102,12 +103,14 @@ object RepositoryModule {
         storyRemoteDataSource: StoryRemoteDataSource,
         storyLocalDataSource: StoryLocalDataSource,
         storyRemoteMediator: StoryRemoteMediator,
-        storyPagingSource: StoryPagingSource
+        storyPagingSource: StoryPagingSource,
+        favoritesLocalDataSource: FavoritesLocalDataSource
     ) = StoryRepository.getInstance(
         storyRemoteDataSource,
         storyLocalDataSource,
         storyRemoteMediator,
-        storyPagingSource
+        storyPagingSource,
+        favoritesLocalDataSource
     )
 
 }

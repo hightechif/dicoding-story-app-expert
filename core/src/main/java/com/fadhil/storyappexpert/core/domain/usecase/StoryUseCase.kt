@@ -2,10 +2,8 @@ package com.fadhil.storyappexpert.core.domain.usecase
 
 import android.content.Context
 import android.net.Uri
-import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.core.domain.model.Story
 import com.fadhil.storyappexpert.core.domain.repository.IStoryRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -21,7 +19,7 @@ class StoryUseCase @Inject constructor(
         reload: Boolean
     ) = storyRepository.getAllStories(page, size, location, reload)
 
-    override fun getFavoriteStories() = storyRepository.getFavoriteStories()
+    override fun getFavoriteStories() = storyRepository.getFavorites()
 
     override fun getPagingStory(
         size: Int?,

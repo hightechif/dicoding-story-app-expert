@@ -38,4 +38,8 @@ object DatabaseModule {
     @Provides
     fun provideStoryDao(db: AppDatabase) = db.storyDao()
 
+    @Singleton
+    @Provides
+    fun provideFavoritesDao(db: AppDatabase) = db.favoritesDao()
+
 }

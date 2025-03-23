@@ -26,7 +26,7 @@ data class StoryEntity(
     @ColumnInfo(name = "lon")
     val lon: Double?,
     @ColumnInfo(name = "favorite")
-    val favorite: Boolean = false
+    val favorite: Boolean?
 ) {
 
     fun getCreatedLocalDateTime(): LocalDateTime =

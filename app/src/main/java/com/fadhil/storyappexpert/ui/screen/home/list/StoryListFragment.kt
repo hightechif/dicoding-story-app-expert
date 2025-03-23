@@ -26,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class StoryListFragment : Fragment(), ModuleNavigator,
@@ -138,6 +139,8 @@ class StoryListFragment : Fragment(), ModuleNavigator,
         // viewLifecycleOwner.lifecycleScope.
         viewModel.stories.observe(viewLifecycleOwner) { pagingData ->
             mStoryPagingAdapter.submitData(lifecycle, pagingData)
+            val list = mStoryPagingAdapter.snapshot().items
+            Timber.d("DEBUG FADHIL --- list=${list}")
         }
     }
 
@@ -165,7 +168,7 @@ class StoryListFragment : Fragment(), ModuleNavigator,
     private fun openDynamicActivity() {
         viewModel.getFavoriteStories().observe(viewLifecycleOwner) { list ->
             if (viewModel.isFabFavoriteClicked.value == true) {
-                val json = Gson().toJson(Favorites.build(list))
+                val json = Gson().toJson(Favorites(list))
                 navigateToFavoriteStoryActivity(jsonData = json)
                 viewModel.isFabFavoriteClicked.postValue(false)
             }

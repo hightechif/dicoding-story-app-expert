@@ -6,16 +6,17 @@ data class Favorites(
 
     companion object {
         fun build(input: List<Story>) = Favorites(
-            list = input.map {
+            list = input.map { story ->
                 Favorite(
-                    id = it.id,
-                    name = it.name,
-                    description = it.description,
-                    photoUrl = it.photoUrl,
-                    displayedDate = it.getCreatedDateDisplay(),
-                    lat = it.lat,
-                    lon = it.lon,
-                    favorite = it.favorite,
+                    id = "fav-${story.id}",
+                    storyId = story.id,
+                    name = story.name,
+                    description = story.description,
+                    photoUrl = story.photoUrl,
+                    displayedDate = story.getCreatedDateDisplay(),
+                    lat = story.lat,
+                    lon = story.lon,
+                    favorite = story.favorite,
                 )
             }
         )

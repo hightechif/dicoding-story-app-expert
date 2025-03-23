@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
 import com.fadhil.storyappexpert.core.data.Result
 import com.fadhil.storyappexpert.core.data.source.remote.response.FileUploadResponse
+import com.fadhil.storyappexpert.core.domain.model.Favorite
 import com.fadhil.storyappexpert.core.domain.model.Story
 import kotlinx.coroutines.flow.Flow
 
@@ -18,7 +19,7 @@ interface IStoryUseCase {
         reload: Boolean
     ): Flow<Result<List<Story>>>
 
-    fun getFavoriteStories(): Flow<List<Story>>
+    fun getFavoriteStories(): Flow<List<Favorite>>
 
     fun getPagingStory(
         size: Int?,
