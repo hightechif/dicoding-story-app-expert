@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.invoke
 import java.util.Properties
 
 plugins {
@@ -52,6 +53,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    kotlin {
+        jvmToolchain(17)
     }
     dynamicFeatures += setOf(":favorite")
 }
